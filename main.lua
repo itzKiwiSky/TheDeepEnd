@@ -50,14 +50,10 @@ function love.initialize(args)
 
     registers = {
         user = {
+            roundStarted = false,
+            paused = false
         },
         system = {
-            editor = {
-                interface = {
-                    startMenu = true
-                },
-                isProjectLoaded = false,
-            }
         }
     }
 

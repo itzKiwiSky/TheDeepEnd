@@ -18,8 +18,6 @@ end
 function Player:update(elapsed)
     self.y = self.y + self.gravity * elapsed
 
-
-
     if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
         -- touch shit --
     else

@@ -3,11 +3,14 @@ Fish.__index = Fish
 
 local function _new(x, y, speed)
     local self = setmetatable({}, Fish)
+    self.bubbles = require 'src.Components.Modules.Game.Particles.FishBubbles'
     self.x = x or 0
     self.y = y or 0
-    self.speed = speed or 150
+    self.speed = speed or 80
     self.drawable = love.graphics.newImage("assets/images/gamerfish.png")
     self.hitbox = {
+        x = 0,
+        y = 0,
         offsetX = 24,
         offsetY = 10,
         w = self.drawable:getWidth() * 2 - 10,
@@ -18,11 +21,16 @@ local function _new(x, y, speed)
 end
 
 function Fish:draw()
+    love.graphics.draw(self.bubbles, self.direction == "right" and self.x + 22 or self.x - 22, self.y, 0, 0.5, 0.5)
     love.graphics.draw(self.drawable, self.x, self.y, 0, self.direction == "right" and 2 or -2, 2, self.drawable:getWidth() / 2, self.drawable:getHeight() / 2)
     love.graphics.rectangle("line", self.x - self.hitbox.offsetX, self.y - self.hitbox.offsetY, self.hitbox.w, self.hitbox.h)
 end
 
 function Fish:update(elapsed)
+    self.bubbles:update(elapsed)
+
+    self.x, self.y = self.x - self.hitbox.offsetX, self.y - self.hitbox.offsetY
+    
     -- check bounds --
     if self.x - self.hitbox.offsetX <= 0 then
         self.direction = "right"
@@ -30,7 +38,6 @@ function Fish:update(elapsed)
     if self.x + self.drawable:getWidth() >= love.graphics.getWidth() then
         self.direction = "left"
     end
-
 
     switch(self.direction, {
         ["left"] = function()

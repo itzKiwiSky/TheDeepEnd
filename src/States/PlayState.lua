@@ -3,20 +3,21 @@ PlayState = {}
 function PlayState:init()
     player = require 'src.Components.Modules.Game.Player'
     fish = require 'src.Components.Modules.Game.Fish'
-    player:init(nil, 100)
-
-    f = fish(90, 300)
+    world = require 'src.Components.Modules.Game.World'
 
     heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/heart_hud")
 end
 
 function PlayState:enter()
-
+    world:init("assets/data/levels/")
+    player:init(nil, 100)
 end
 
 function PlayState:draw()
     player:draw()
     f:draw()
+
+    world:draw()
 
     -- Hud Thing --
     for h = 1, player.maxHP, 1 do
@@ -30,10 +31,12 @@ end
 
 function PlayState:update(elapsed)
     if registers.user.paused then
-        return
+
+    else
+        player:update(elapsed)
+        f:update(elapsed)
+        world:update(elapsed)
     end
-    player:update(elapsed)
-    f:update(elapsed)
 end
 
 function PlayState:keypressed(k)

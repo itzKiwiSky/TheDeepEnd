@@ -2,7 +2,7 @@ local Player = {}
 
 function Player:init(x, y)
     self.partcles = {}
-    self.partcles.bubbles = require 'src.Components.Modules.Game.Particles.bubbles'
+    self.partcles.bubbles = require 'src.Components.Modules.Game.Particles.Bubbles'
 
     self.partcles.bubbles:start()
 
@@ -26,7 +26,7 @@ function Player:draw()
     --love.graphics.draw(self.diverAsset, self.x, self.y, math.rad(45), 1, 1, self.diverAsset:getWidth() / 2, self.diverAsset:getHeight() / 2)
     local qx, qy, qw, qh = self.diverAssets.quads[1]:getViewport()
     love.graphics.setBlendMode("add")
-        love.graphics.draw(self.partcles.bubbles, (self.x + qw / 2) - 16, self.y - 8, 0, 0.2, 0.2)
+        love.graphics.draw(self.partcles.bubbles, (self.x + qw / 2) - 16, self.y - 8, 0, 0.3, 0.3)
     love.graphics.setBlendMode("alpha")
     love.graphics.draw(
         self.diverAssets.image, 

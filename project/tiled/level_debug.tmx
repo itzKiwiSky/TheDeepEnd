@@ -10,7 +10,7 @@
  <tileset firstgid="1" name="blocks_tileset" tilewidth="32" tileheight="32" tilecount="48" columns="3">
   <image source="../../assets/images/blocks_tileset.png" width="96" height="512"/>
  </tileset>
- <layer id="3" name="tilesbg1" width="20" height="25">
+ <layer id="3" name="tilesbg" width="20" height="25">
   <properties>
    <property name="color" type="float" value="0.4"/>
   </properties>

@@ -29,7 +29,7 @@ end
 function Fish:update(elapsed)
     self.bubbles:update(elapsed)
 
-    self.x, self.y = self.x - self.hitbox.offsetX, self.y - self.hitbox.offsetY
+    --self.x, self.y = self.x - self.hitbox.offsetX, self.y - self.hitbox.offsetY
     
     -- check bounds --
     if self.x - self.hitbox.offsetX <= 0 then

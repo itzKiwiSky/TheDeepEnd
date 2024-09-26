@@ -54,7 +54,7 @@ return {
       width = 20,
       height = 25,
       id = 3,
-      name = "tilesbg1",
+      name = "tilesbg",
       class = "",
       visible = true,
       opacity = 1,

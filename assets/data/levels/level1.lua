@@ -212,8 +212,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["attackCooldown"] = 8.5,
-            ["attackTime"] = 1.5,
+            ["attackCooldown"] = 5,
+            ["attackTime"] = 2.5,
             ["direction"] = 2
           }
         },
@@ -229,7 +229,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["attackCooldown"] = 10,
+            ["attackCooldown"] = 5.5,
             ["attackTime"] = 2.4,
             ["direction"] = 4
           }

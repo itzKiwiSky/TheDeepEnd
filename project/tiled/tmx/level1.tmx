@@ -89,15 +89,15 @@
   <object id="7" template="../templates/gamerfish.tx" x="544" y="224"/>
   <object id="8" template="../templates/geiser.tx" x="0" y="800">
    <properties>
-    <property name="attackCooldown" type="float" value="8.5"/>
-    <property name="attackTime" type="float" value="1.5"/>
+    <property name="attackCooldown" type="float" value="5"/>
+    <property name="attackTime" type="float" value="2.5"/>
     <property name="direction" type="int" value="2"/>
    </properties>
   </object>
   <object id="9" template="../templates/geiser.tx" x="576" y="608">
    <properties>
-    <property name="attackCooldown" type="float" value="10"/>
-    <property name="attackTime" type="float" value="2.4"/>
+    <property name="attackCooldown" type="float" value="5.5"/>
+    <property name="attackTime" type="float" value="2.5"/>
     <property name="direction" type="int" value="4"/>
    </properties>
   </object>

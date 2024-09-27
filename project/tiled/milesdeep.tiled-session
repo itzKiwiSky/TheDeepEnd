@@ -5,9 +5,9 @@
     },
     "activeFile": "tmx/level1.tmx",
     "expandedProjectPaths": [
+        "templates",
         ".",
         "tsx",
-        "templates",
         "tmx"
     ],
     "fileStates": {
@@ -29,8 +29,8 @@
             "scale": 1.8088,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 129.9203892083149,
-                "y": 713.7328615656788
+                "x": 527.4214949137549,
+                "y": 715.9442724458204
             }
         },
         "tmx/level_debug.tmx": {

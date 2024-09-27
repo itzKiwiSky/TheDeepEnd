@@ -4,15 +4,30 @@ function PlayState:init()
     world = require 'src.Components.Modules.Game.World'
 
     heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/heart_hud")
+
+    viewcam = camera()
+
+    camScroll = {
+        scrollX = 0,
+        scrollY = 0,
+        x = 0,
+        y = 0,
+        xMultiplier = 0.04,
+        yMultiplier = 0.04
+    }
 end
 
 function PlayState:enter()
-    world:init("assets/data/levels/level_debug.lua")
+    world:init()
+    world:build("assets/data/levels/level1.lua")
+    camScroll.x = world.templates.player.x
+    camScroll.y = world.templates.player.y
 end
 
 function PlayState:draw()
-    world:draw()
-    --f:draw()
+    viewcam:attach()
+        world:draw()
+    viewcam:detach()
 
     -- Hud Thing --
     for h = 1, world.templates.player.maxHP, 1 do
@@ -22,12 +37,46 @@ function PlayState:draw()
             love.graphics.draw(heartsheet, heartquads["heartoff"], h * 40 - 16, 20, 0, 2, 2)
         end
     end
+
+    if registers.user.paused then
+        love.graphics.setColor(0, 0, 0, 0.4)
+            love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        love.graphics.setColor(1, 1, 1, 1)
+    end
 end
 
 function PlayState:update(elapsed)
     if registers.user.paused then
 
+    elseif registers.user.levelEnded then
+
     else
+        -- camera scroll --
+        camScroll.scrollX = camScroll.scrollX - (camScroll.scrollX - world.templates.player.x) * camScroll.xMultiplier
+        camScroll.scrollY = camScroll.scrollY - (camScroll.scrollY - world.templates.player.y) * camScroll.yMultiplier
+        camScroll.x = camScroll.scrollX
+        camScroll.y = camScroll.scrollY
+    
+        -- cam scroll --
+        viewcam:lookAt(camScroll.x, camScroll.y)
+
+        -- camera bounds --
+        if viewcam.x < love.graphics.getWidth() / 2 then
+            viewcam.x = love.graphics.getWidth() / 2
+        end
+
+        if viewcam.y < love.graphics.getHeight() / 2 then
+            viewcam.y = love.graphics.getHeight() / 2
+        end
+
+        if viewcam.x > world.width - love.graphics.getWidth() / 2 then
+            viewcam.x = world.width - love.graphics.getWidth() / 2
+        end
+
+        if viewcam.y > world.height - love.graphics.getHeight() / 2 then
+            viewcam.y = world.height - love.graphics.getHeight() / 2
+        end
+
         world:update(elapsed)
     end
 end

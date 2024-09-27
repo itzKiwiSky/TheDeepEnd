@@ -51,7 +51,8 @@ function love.initialize(args)
     registers = {
         user = {
             roundStarted = false,
-            paused = false
+            paused = false,
+            levelEnded = false
         },
         system = {
         }

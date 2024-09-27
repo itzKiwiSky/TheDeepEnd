@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+ <object name="next_phase" width="32" height="32">
+  <properties>
+   <property name="next_phase" value="levelname"/>
+  </properties>
+ </object>
+</template>

@@ -6,44 +6,19 @@ return {
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
-  height = 25,
+  height = 32,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 6,
-  nextobjectid = 15,
+  nextlayerid = 4,
+  nextobjectid = 10,
   properties = {
-    ["next_phase"] = "debug_level",
-    ["scrolling"] = false
+    ["next_phase"] = "levelname"
   },
   tilesets = {
     {
-      name = "blocks_tileset",
+      name = "blocks",
       firstgid = 1,
-      class = "",
-      tilewidth = 32,
-      tileheight = 32,
-      spacing = 0,
-      margin = 0,
-      columns = 3,
-      image = "../../images/blocks_tileset.png",
-      imagewidth = 96,
-      imageheight = 512,
-      objectalignment = "unspecified",
-      tilerendersize = "tile",
-      fillmode = "stretch",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 32,
-        height = 32
-      },
-      properties = {},
-      wangsets = {},
-      tilecount = 48,
-      tiles = {}
+      filename = "../../../project/tiled/tsx/blocks.tsx"
     }
   },
   layers = {
@@ -52,8 +27,8 @@ return {
       x = 0,
       y = 0,
       width = 20,
-      height = 25,
-      id = 3,
+      height = 32,
+      id = 1,
       name = "tilesbg",
       class = "",
       visible = true,
@@ -80,18 +55,25 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0,
-        0, 5, 0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5, 0, 0,
-        0, 5, 5, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 5, 0, 0,
-        0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0,
-        0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0,
-        0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0,
-        0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 48,
+        0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 36,
+        0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 0, 0, 36,
+        0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 36,
+        34, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 41, 40,
+        34, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        34, 0, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -99,8 +81,8 @@ return {
       x = 0,
       y = 0,
       width = 20,
-      height = 25,
-      id = 1,
+      height = 32,
+      id = 2,
       name = "tilesfg",
       class = "",
       visible = true,
@@ -131,18 +113,25 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        21, 21, 21, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 21, 21, 21, 21, 21,
-        2, 2, 2, 3, 21, 21, 21, 0, 0, 0, 0, 0, 0, 21, 1, 2, 2, 2, 2, 2,
-        5, 5, 5, 18, 2, 2, 3, 21, 0, 0, 0, 0, 48, 1, 17, 5, 5, 5, 5, 5,
-        5, 5, 5, 5, 5, 5, 18, 3, 42, 0, 0, 0, 36, 4, 5, 5, 5, 5, 5, 5,
-        5, 5, 5, 5, 5, 5, 5, 6, 34, 0, 0, 0, 36, 4, 5, 5, 5, 5, 5, 5,
-        5, 5, 5, 5, 5, 5, 5, 6, 34, 0, 0, 0, 36, 4, 5, 5, 5, 5, 5, 5
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 2, 2,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 2, 5, 5, 5,
+        2, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 2, 2, 5, 5, 5, 5, 5,
+        5, 5, 2, 30, 0, 0, 0, 0, 0, 0, 29, 2, 5, 5, 5, 5, 5, 5, 5, 5,
+        5, 5, 5, 6, 0, 0, 0, 0, 0, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
       }
     },
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 2,
+      id = 3,
       name = "objects",
       class = "",
       visible = true,
@@ -154,7 +143,7 @@ return {
       properties = {},
       objects = {
         {
-          id = 3,
+          id = 1,
           name = "PlayerSpawn",
           type = "",
           shape = "rectangle",
@@ -167,59 +156,7 @@ return {
           properties = {}
         },
         {
-          id = 8,
-          name = "geiser_up",
-          type = "",
-          shape = "rectangle",
-          x = 160,
-          y = 640,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 10,
-          name = "next_phase",
-          type = "",
-          shape = "rectangle",
-          x = 256,
-          y = 768,
-          width = 160,
-          height = 33,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 11,
-          name = "gamerfish",
-          type = "",
-          shape = "rectangle",
-          x = 544,
-          y = 288,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 12,
-          name = "geiser_up",
-          type = "",
-          shape = "rectangle",
-          x = 546,
-          y = 606,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 13,
+          id = 5,
           name = "gamerfish",
           type = "",
           shape = "rectangle",
@@ -229,20 +166,73 @@ return {
           height = 32,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 40
+          }
         },
         {
-          id = 14,
+          id = 6,
           name = "gamerfish",
           type = "",
           shape = "rectangle",
-          x = 256,
-          y = 192,
+          x = 288,
+          y = 480,
           width = 32,
           height = 32,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 40
+          }
+        },
+        {
+          id = 7,
+          name = "gamerfish",
+          type = "",
+          shape = "rectangle",
+          x = 544,
+          y = 224,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["speed"] = 40
+          }
+        },
+        {
+          id = 8,
+          name = "geiser",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 800,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["attackCooldown"] = 8.5,
+            ["attackTime"] = 1.5,
+            ["direction"] = 2
+          }
+        },
+        {
+          id = 9,
+          name = "geiser",
+          type = "",
+          shape = "rectangle",
+          x = 576,
+          y = 608,
+          width = 64,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["attackCooldown"] = 10,
+            ["attackTime"] = 2.4,
+            ["direction"] = 4
+          }
         }
       }
     }

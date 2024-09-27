@@ -1,0 +1,73 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "tmx/level1.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "tsx",
+        "templates",
+        "tmx"
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "level_debug.tmx": {
+            "scale": 0.9939374999999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 319.9396340313149,
+                "y": 400.4275922781865
+            }
+        },
+        "level_debug.tmx#blocks_tileset": {
+            "scaleInDock": 1
+        },
+        "tmx/level1.tmx": {
+            "scale": 1.8088,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 129.9203892083149,
+                "y": 713.7328615656788
+            }
+        },
+        "tmx/level_debug.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 350.5,
+                "y": 392
+            }
+        },
+        "tmx/level_debug.tmx#blocks_tileset": {
+            "scaleInEditor": 1
+        },
+        "tsx/blocks.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/data/levels",
+    "last.externalTilesetPath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tsx",
+    "last.imagePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/images",
+    "last.objectTemplatePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tmx",
+    "map.height": 32,
+    "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 20,
+    "openFiles": [
+        "tmx/level1.tmx"
+    ],
+    "project": "milesdeep.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "tmx/level1.tmx",
+        "tsx/blocks.tsx",
+        "tmx/level_debug.tmx",
+        "level_debug.tmx"
+    ],
+    "tileset.lastUsedFilter": "Ficheiros de conjunto de tiles Tiled (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx"
+}

@@ -1,4 +1,5 @@
 local World = {}
+local glowAnimValue = 0
 
 local function _convert2D(data, w, h)
     local tiledata = {}
@@ -33,27 +34,48 @@ local function getObject(data, object)
 end
 
 function World:init(levelfile)
+    local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
     self.templates = {
-        player = require 'src.Components.Modules.Game.Player',
-        gamerfish = require 'src.Components.Modules.Game.Fish',
+        player = require 'src.Components.Modules.Game.Objects.Player',
+        gamerfish = require 'src.Components.Modules.Game.Objects.Fish',
+        geiser = require 'src.Components.Modules.Game.Objects.Geiser'
     }
 
-    self.width = 0
-    self.height = 0
-
-    self.tiledfile = love.filesystem.load(levelfile)()
+    self.tiledfile = {}
 
     self.assets = {}
     self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/blocks_tileset")
+    self.assets.endGradient = love.graphics.newGradient("vertical", {255, 255, 255, 255}, {255, 255, 255, 0})
 
     self.tiles = {}
     self.batches = {}
     self.layer = {}
     self.objects = {}
 
+    self.widthInTiles = 0
+    self.heightInTiles = 0
+    self.width = 0
+    self.height = 0
+
+    --self.assets.levelEnding = levelEnd(0, self.height - 32, self.width, 32, self.tiledfile.properties["next_phase"])
+
+end
+
+function World:build(levelfilename)
+    local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
+    self.tiledfile = love.filesystem.load(levelfilename)()
+
+    self.widthInTiles = self.tiledfile.width
+    self.heightInTiles = self.tiledfile.height
+    self.width = self.tiledfile.width * 32
+    self.height = self.tiledfile.height * 32
+
+    self.assets.levelEnding = levelEnd(0, self.height + 64, self.width, 32, self.tiledfile.properties["next_phase"])
+
     for _, layer in pairs(self.tiledfile.layers) do
         if layer.type == "tilelayer" then
             self.batches[layer.name] = love.graphics.newSpriteBatch(self.assets.sheet, nil, "static")
+            self.batches[layer.name]:clear()
             self.layer[layer.name] = layer
             self.tiles[layer.name] = _convert2D(layer.data, self.tiledfile.width, self.tiledfile.height)
             for y = 1, self.tiledfile.height, 1 do
@@ -64,13 +86,20 @@ function World:init(levelfile)
                 end
             end
         else
-            --ayer.objects
+            --layer.objects
             for _, o in pairs(layer.objects) do
                 if o.name == "PlayerSpawn" then
                     self.templates.player:init(o.x, o.y)
                 else
                     if self.templates[o.name] then
-                        table.insert(self.objects, self.templates[o.name](o.x, o.y, math.random(30, 50)))
+                        switch(o.name, {
+                            ["gamerfish"] = function()
+                                table.insert(self.objects, self.templates.gamerfish(o.x, o.y, o.properties.speed))
+                            end,
+                            ["geiser"] = function()
+                                table.insert(self.objects, self.templates.geiser(o.x, o.y, o.properties.direction, o.properties.attackTime, o.properties.attackCooldown))
+                            end
+                        })
                     end
                 end
             end
@@ -86,16 +115,30 @@ function World:draw()
 
     self.templates.player:draw()
     for _, o in pairs(self.objects) do
-        o:draw()
+        if o.draw then
+            o:draw()
+        end
     end
 
+    love.graphics.setBlendMode("add")
+    love.graphics.draw(self.assets.endGradient, 0, self.height, 0, self.width, -glowAnimValue)
+    love.graphics.setBlendMode("alpha")
+
     love.graphics.draw(self.batches["tilesfg"])
+    
 end
 
 function World:update(elapsed)
     self.templates.player:update(elapsed)
     for _, o in pairs(self.objects) do
-        o:update(elapsed)
+        if o.update then
+            o:update(elapsed)
+        end
+    end
+    glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64
+    
+    if collision.rectRect(self.assets.levelEnding, self.templates.player.hitbox) then
+        registers.user.levelEnded = true
     end
 end
 

@@ -38,7 +38,8 @@ function World:init(levelfile)
     self.templates = {
         player = require 'src.Components.Modules.Game.Objects.Player',
         gamerfish = require 'src.Components.Modules.Game.Objects.Fish',
-        geiser = require 'src.Components.Modules.Game.Objects.Geiser'
+        geiser = require 'src.Components.Modules.Game.Objects.Geiser',
+        pufferfish = require 'src.Components.Modules.Game.Objects.Pufferfish'
     }
 
     self.tiledfile = {}
@@ -106,6 +107,9 @@ function World:build(levelfilename)
                             end,
                             ["geiser"] = function()
                                 table.insert(self.objects, self.templates.geiser(o.x, o.y, o.properties.direction, o.properties.attackTime, o.properties.attackCooldown))
+                            end,
+                            ["pufferfish"] = function()
+                                table.insert(self.objects, self.templates.geiser(o.x, o.y, o.properties.range))
                             end
                         })
                     end

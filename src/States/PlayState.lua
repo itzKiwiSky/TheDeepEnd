@@ -20,7 +20,7 @@ end
 
 function PlayState:enter()
     world:init()
-    world:build("assets/data/levels/level1.lua")
+    world:build("assets/data/levels/level2.lua")
     camScroll.x = world.templates.player.x
     camScroll.y = world.templates.player.y
 end

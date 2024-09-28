@@ -4,7 +4,7 @@
   <export target="../../../assets/data/levels/level1.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="next_phase" value="levelname"/>
+  <property name="next_phase" value="level2"/>
  </properties>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>
  <layer id="1" name="tilesbg" width="20" height="32">

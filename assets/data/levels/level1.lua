@@ -12,7 +12,7 @@ return {
   nextlayerid = 4,
   nextobjectid = 10,
   properties = {
-    ["next_phase"] = "levelname"
+    ["next_phase"] = "level2"
   },
   tilesets = {
     {

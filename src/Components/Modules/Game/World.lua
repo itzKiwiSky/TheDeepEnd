@@ -61,6 +61,14 @@ function World:init(levelfile)
 
 end
 
+function World:addLayer(scale, color)
+    table.insert(self.pseudoLayers, {
+        scale = scale,
+        color = color,
+    })
+    table.sort(self.pseudoLayers, function(a, b) return a.scale < b.scale end)
+end
+
 function World:build(levelfilename)
     local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
     self.tiledfile = love.filesystem.load(levelfilename)()
@@ -109,7 +117,9 @@ end
 
 function World:draw()
     local layer = self.layer
-    love.graphics.setColor(layer["tilesbg"].properties.color, layer["tilesbg"].properties.color, layer["tilesbg"].properties.color, 1)
+
+    local bgColor = layer["tilesbg"].properties.color
+    love.graphics.setColor(bgColor, bgColor, bgColor, 1)
         love.graphics.draw(self.batches["tilesbg"])
     love.graphics.setColor(1, 1, 1, 1)
 
@@ -133,6 +143,23 @@ function World:update(elapsed)
     for _, o in pairs(self.objects) do
         if o.update then
             o:update(elapsed)
+        end
+        if o.meta then
+            if o.meta.state == "attack" then 
+                if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                    if not self.templates.player.isDamaged then
+                        self.templates.player.HP = self.templates.player.HP - 1
+                    end
+                    self.templates.player.isDamaged = true
+                end
+            end
+        else
+            if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                if not self.templates.player.isDamaged then
+                    self.templates.player.HP = self.templates.player.HP - 1
+                end
+                self.templates.player.isDamaged = true
+            end
         end
     end
     glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64

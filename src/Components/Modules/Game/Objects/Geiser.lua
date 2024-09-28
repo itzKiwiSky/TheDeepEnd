@@ -12,7 +12,7 @@ local function _new(x, y, direction, attackTime, attackCooldown)
     self.attackTime = attackTime or 2.4
     self.attackCooldown = attackCooldown or 5
 
-    self.attackHitbox = {
+    self.hitbox = {
         x = self.x,
         y = self.y + 8,
         w = world.width,
@@ -40,10 +40,22 @@ function Geiser:draw()
         love.graphics.draw(self.assets.particles, self.x + 32, self.y + 32, math.rad(270))
     end
     love.graphics.setBlendMode("alpha")
+    love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
 end
 
 function Geiser:update(elapsed)
     self.assets.particles:update(elapsed)
+
+    if self.direction == 1 then
+        
+    elseif self.direction == 2 then
+        self.hitbox.y = self.y + (32 - 8)
+    elseif self.direction == 3 then
+        
+    elseif self.direction == 4 then
+        self.hitbox.x = 0
+        self.hitbox.y = self.y + (32 - 8)
+    end
 
     if self.meta.state == "idle" then
         self.meta.timer = self.meta.timer - elapsed

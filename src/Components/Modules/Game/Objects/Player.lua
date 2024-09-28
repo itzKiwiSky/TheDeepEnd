@@ -15,7 +15,9 @@ function Player:init(x, y)
     self.harpoon = false
     self.mirrored = false
     self.isDamaged = false
-    self.cooldown = 0
+    self.cooldown = 2
+
+    self.carringHarpoon = 0
 
     self.hitbox = {
         offsetX = 16,
@@ -39,6 +41,9 @@ function Player:draw()
     love.graphics.setBlendMode("add")
         love.graphics.draw(self.partcles.bubbles, (self.x + qw / 2) - 16, self.y - 8, 0, 0.3, 0.3)
     love.graphics.setBlendMode("alpha")
+    if self.isDamaged then
+        love.graphics.setColor(0.5, 0.5, 0.5, 1)
+    end
     love.graphics.draw(
         self.diverAssets.image, 
         self.diverAssets.quads[not self.harpoon and 1 or 2], 
@@ -46,12 +51,21 @@ function Player:draw()
         not self.mirrored and 1.5 or -1.5, 1.5, 
         qw / 2, qh / 2
     )
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
 end
 
 function Player:update(elapsed)
     self.y = self.y + self.gravity * elapsed
     self.partcles.bubbles:update(elapsed)
+
+    if self.isDamaged then
+        self.cooldown = self.cooldown - elapsed
+        if self.cooldown <= 0 then
+            self.isDamaged = false
+            self.cooldown = 2
+        end
+    end
 
     self.hitbox.x = self.x - self.hitbox.offsetX
     self.hitbox.y = self.y - self.hitbox.offsetY

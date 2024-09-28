@@ -1,5 +1,6 @@
-{ "frames": {
-   "fish0": {
+{ "frames": [
+   {
+    "filename": "fish0",
     "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +8,8 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    },
-   "fish1": {
+   {
+    "filename": "fish1",
     "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +17,8 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    },
-   "fish2": {
+   {
+    "filename": "fish2",
     "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -23,7 +26,8 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    },
-   "fish3": {
+   {
+    "filename": "fish3",
     "frame": { "x": 96, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -31,7 +35,8 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    },
-   "fish4": {
+   {
+    "filename": "fish4",
     "frame": { "x": 128, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -39,7 +44,8 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    },
-   "fish5": {
+   {
+    "filename": "fish5",
     "frame": { "x": 160, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -47,7 +53,7 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
    }
- },
+ ],
  "meta": {
   "app": "https://www.aseprite.org/",
   "version": "1.3.8.1-x64",

@@ -4,6 +4,7 @@ function PlayState:init()
     world = require 'src.Components.Modules.Game.World'
 
     heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/heart_hud")
+    harpoonHud = love.graphics.newImage("assets/images/harpoon.png")
 
     viewcam = camera()
 
@@ -36,6 +37,10 @@ function PlayState:draw()
         else
             love.graphics.draw(heartsheet, heartquads["heartoff"], h * 40 - 16, 20, 0, 2, 2)
         end
+    end
+
+    for h = 1, world.templates.player.carringHarpoon, 1 do
+        love.graphics.draw(harpoonHud, h * 40 , 60, math.rad(45), 0.8, 0.8)
     end
 
     if registers.user.paused then

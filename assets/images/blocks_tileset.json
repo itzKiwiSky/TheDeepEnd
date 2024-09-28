@@ -288,7 +288,7 @@
     "duration": 100
    },
    {
-    "filename": "border_0",
+    "filename": "slopes_4",
     "frame": { "x": 64, "y": 320, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -297,7 +297,7 @@
     "duration": 100
    },
    {
-    "filename": "border_1",
+    "filename": "slopes_5",
     "frame": { "x": 0, "y": 352, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -306,7 +306,7 @@
     "duration": 100
    },
    {
-    "filename": "border_2",
+    "filename": "slopes_6",
     "frame": { "x": 32, "y": 352, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -315,7 +315,7 @@
     "duration": 100
    },
    {
-    "filename": "border_3",
+    "filename": "slopes_7",
     "frame": { "x": 64, "y": 352, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -324,7 +324,7 @@
     "duration": 100
    },
    {
-    "filename": "border_4",
+    "filename": "border_0",
     "frame": { "x": 0, "y": 384, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -333,7 +333,7 @@
     "duration": 100
    },
    {
-    "filename": "border_5",
+    "filename": "border_1",
     "frame": { "x": 32, "y": 384, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -342,7 +342,7 @@
     "duration": 100
    },
    {
-    "filename": "border_6",
+    "filename": "border_2",
     "frame": { "x": 64, "y": 384, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -351,7 +351,7 @@
     "duration": 100
    },
    {
-    "filename": "border_7",
+    "filename": "border_3",
     "frame": { "x": 0, "y": 416, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -360,7 +360,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_0",
+    "filename": "border_4",
     "frame": { "x": 32, "y": 416, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -369,7 +369,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_1",
+    "filename": "border_5",
     "frame": { "x": 64, "y": 416, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -378,7 +378,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_2",
+    "filename": "border_6",
     "frame": { "x": 0, "y": 448, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -387,7 +387,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_3",
+    "filename": "border_7",
     "frame": { "x": 32, "y": 448, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -396,7 +396,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_4",
+    "filename": "border_point_0",
     "frame": { "x": 64, "y": 448, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -405,7 +405,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_5",
+    "filename": "border_point_1",
     "frame": { "x": 0, "y": 480, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -414,7 +414,7 @@
     "duration": 100
    },
    {
-    "filename": "border_point_6",
+    "filename": "border_point_2",
     "frame": { "x": 32, "y": 480, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -423,8 +423,44 @@
     "duration": 100
    },
    {
-    "filename": "border_point_7",
+    "filename": "border_point_3",
     "frame": { "x": 64, "y": 480, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   {
+    "filename": "border_point_4",
+    "frame": { "x": 0, "y": 512, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   {
+    "filename": "border_point_5",
+    "frame": { "x": 32, "y": 512, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   {
+    "filename": "border_point_6",
+    "frame": { "x": 64, "y": 512, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 100
+   },
+   {
+    "filename": "border_point_7",
+    "frame": { "x": 0, "y": 544, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -437,7 +473,7 @@
   "version": "1.3.8.1-x64",
   "image": "blocks_tileset.png",
   "format": "RGBA8888",
-  "size": { "w": 96, "h": 512 },
+  "size": { "w": 96, "h": 576 },
   "scale": "1"
  }
 }

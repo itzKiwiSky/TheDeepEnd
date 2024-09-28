@@ -3,6 +3,7 @@ Geiser.__index = Geiser
 
 local function _new(x, y, direction, attackTime, attackCooldown)
     local self = setmetatable({}, Geiser)
+    self.type = "geiser"
     self.x = x or 0
     self.y = y or 0
     self.assets = {}
@@ -40,7 +41,10 @@ function Geiser:draw()
         love.graphics.draw(self.assets.particles, self.x + 32, self.y + 32, math.rad(270))
     end
     love.graphics.setBlendMode("alpha")
-    love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+
+    if registers.system.showDebugHitbox then
+        love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+    end
 end
 
 function Geiser:update(elapsed)

@@ -4,6 +4,7 @@ Fish.__index = Fish
 local function _new(x, y, speed)
     local self = setmetatable({}, Fish)
     self.bubbles = require 'src.Components.Modules.Game.Particles.FishBubbles'
+    self.type = "fish"
     self.x = x or 0
     self.y = y or 0
     self.speed = speed or 80
@@ -23,7 +24,9 @@ end
 function Fish:draw()
     love.graphics.draw(self.bubbles, self.direction == "right" and self.x + 22 or self.x - 22, self.y, 0, 0.5, 0.5)
     love.graphics.draw(self.drawable, self.x, self.y, 0, self.direction == "right" and 2 or -2, 2, self.drawable:getWidth() / 2, self.drawable:getHeight() / 2)
-    love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+    if registers.system.showDebugHitbox then
+        love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+    end
 end
 
 function Fish:update(elapsed)
@@ -40,6 +43,12 @@ function Fish:update(elapsed)
     end
     if self.x + self.drawable:getWidth() >= love.graphics.getWidth() then
         self.direction = "left"
+    end
+
+    for _, o in ipairs(world.tilesObj) do
+        if collision.rectRect(self.hitbox, o.hitbox) then
+            self.direction = self.direction == "right" and "left" or "right"
+        end
     end
 
     switch(self.direction, {

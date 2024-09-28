@@ -55,6 +55,7 @@ function love.initialize(args)
             levelEnded = false
         },
         system = {
+            showDebugHitbox = false
         }
     }
 
@@ -97,6 +98,14 @@ function love.update(elapsed)
         if math.floor(registers.system.gameTime) >= 20 then
             gamejolt.pingSession(true)
             registers.system.gameTime = 0
+        end
+    end
+end
+
+function love.keypressed(k)
+    if DEBUG_APP then
+        if k == "f4" then
+            registers.system.showDebugHitbox = not registers.system.showDebugHitbox
         end
     end
 end

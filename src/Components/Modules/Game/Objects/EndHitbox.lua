@@ -3,6 +3,7 @@ EndHitbox.__index = EndHitbox
 
 local function _new(x, y, w, h, nextLevel)
     local self = setmetatable({}, EndHitbox)
+    self.type = "ending"
     self.x = x
     self.y = y
     self.w = w

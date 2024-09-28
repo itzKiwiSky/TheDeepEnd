@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level1.tmx",
+    "activeFile": "tmx/level2.tmx",
     "expandedProjectPaths": [
-        "tsx",
         "templates",
-        ".",
-        "tmx"
+        "tsx",
+        "tmx",
+        "."
     ],
     "fileStates": {
         "": {
@@ -29,16 +29,19 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 262,
+                "x": 275.75,
                 "y": 937.5
             }
         },
         "tmx/level2.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 335.3333333333333,
-                "y": 207.33333333333337
+                "x": 444.6666666666667,
+                "y": 702
             }
         },
         "tmx/level_debug.tmx": {
@@ -74,13 +77,15 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 20,
     "openFiles": [
-        "tmx/level1.tmx"
+        "tmx/level1.tmx",
+        "tmx/level2.tmx"
     ],
     "project": "milesdeep.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "tmx/template.tmx",
         "tmx/level1.tmx",
+        "tmx/level2.tmx",
+        "tmx/template.tmx",
         "tsx/blocks.tsx",
         "tmx/level_debug.tmx",
         "level_debug.tmx"

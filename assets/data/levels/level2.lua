@@ -140,7 +140,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 20
+            ["range"] = 150
           }
         },
         {
@@ -155,7 +155,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 20
+            ["range"] = 150
           }
         },
         {
@@ -183,7 +183,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 20
+            ["range"] = 150
           }
         }
       }

@@ -6,6 +6,8 @@ function Player:init(x, y)
 
     self.partcles.bubbles:start()
 
+    self.type = "player"
+
     self.x = x or love.graphics.getWidth() / 2
     self.y = y or 75
     self.gravity = 30
@@ -52,7 +54,9 @@ function Player:draw()
         qw / 2, qh / 2
     )
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+    if registers.system.showDebugHitbox then
+        love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+    end
 end
 
 function Player:update(elapsed)

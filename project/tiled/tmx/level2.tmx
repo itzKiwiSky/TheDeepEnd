@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="5">
+ <editorsettings>
+  <export target="../../../assets/data/levels/level2.lua" format="lua"/>
+ </editorsettings>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>
  <layer id="2" name="tilesbg" width="20" height="25">
   <properties>

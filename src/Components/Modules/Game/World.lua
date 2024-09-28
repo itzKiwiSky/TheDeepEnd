@@ -39,7 +39,8 @@ function World:init(levelfile)
         player = require 'src.Components.Modules.Game.Objects.Player',
         gamerfish = require 'src.Components.Modules.Game.Objects.Fish',
         geiser = require 'src.Components.Modules.Game.Objects.Geiser',
-        pufferfish = require 'src.Components.Modules.Game.Objects.Pufferfish'
+        pufferfish = require 'src.Components.Modules.Game.Objects.Pufferfish',
+        block = require 'src.Components.Modules.Game.Objects.Block'
     }
 
     self.tiledfile = {}
@@ -52,6 +53,7 @@ function World:init(levelfile)
     self.batches = {}
     self.layer = {}
     self.objects = {}
+    self.tilesObj = {}
 
     self.widthInTiles = 0
     self.heightInTiles = 0
@@ -60,14 +62,6 @@ function World:init(levelfile)
 
     --self.assets.levelEnding = levelEnd(0, self.height - 32, self.width, 32, self.tiledfile.properties["next_phase"])
 
-end
-
-function World:addLayer(scale, color)
-    table.insert(self.pseudoLayers, {
-        scale = scale,
-        color = color,
-    })
-    table.sort(self.pseudoLayers, function(a, b) return a.scale < b.scale end)
 end
 
 function World:build(levelfilename)
@@ -81,6 +75,9 @@ function World:build(levelfilename)
 
     self.assets.levelEnding = levelEnd(0, self.height + 64, self.width, 32, self.tiledfile.properties["next_phase"])
 
+    lume.clear(self.objects)
+    lume.clear(self.tilesObj)
+
     for _, layer in pairs(self.tiledfile.layers) do
         if layer.type == "tilelayer" then
             self.batches[layer.name] = love.graphics.newSpriteBatch(self.assets.sheet, nil, "static")
@@ -91,6 +88,9 @@ function World:build(levelfilename)
                 for x = 1, self.tiledfile.width, 1 do
                     if self.tiles[layer.name][y][x] ~= 0 then
                         self.batches[layer.name]:add(self.assets.quads[self.tiles[layer.name][y][x]], (x - 1) * 32, (y - 1) * 32)
+                        if layer.name == "tilesfg" then
+                            table.insert(self.tilesObj, self.templates.block((x - 1) * 32, (y - 1) * 32))
+                        end
                     end
                 end
             end
@@ -109,7 +109,7 @@ function World:build(levelfilename)
                                 table.insert(self.objects, self.templates.geiser(o.x, o.y, o.properties.direction, o.properties.attackTime, o.properties.attackCooldown))
                             end,
                             ["pufferfish"] = function()
-                                table.insert(self.objects, self.templates.geiser(o.x, o.y, o.properties.range))
+                                table.insert(self.objects, self.templates.pufferfish(o.x, o.y, o.properties.range))
                             end
                         })
                     end
@@ -140,6 +140,13 @@ function World:draw()
 
     love.graphics.draw(self.batches["tilesfg"])
     
+    if registers.system.showDebugHitbox then
+        for _, b in pairs(self.tilesObj) do
+            love.graphics.setColor(1, 0, 0, 0.5)
+                love.graphics.rectangle("fill", b.hitbox.x, b.hitbox.y, b.hitbox.w, b.hitbox.h)
+            love.graphics.setColor(1, 1, 1, 1)
+        end
+    end
 end
 
 function World:update(elapsed)

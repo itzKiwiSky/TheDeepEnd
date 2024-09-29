@@ -68,7 +68,7 @@ function World:build(levelfilename)
                 for x = 1, self.tiledfile.width, 1 do
                     if self.tiles[layer.name][y][x] ~= 0 then
                         self.batches[layer.name]:add(self.assets.quads[self.tiles[layer.name][y][x]], (x - 1) * 32, (y - 1) * 32)
-                        if layer.name == "tilesfg" and not table.contains({28, 29, 30, 31}, self.tiles[layer.name][y][x]) then
+                        if layer.name == "tilesfg" and not table.contains({5, 16, 17, 18, 19, 28, 29, 30, 31}, self.tiles[layer.name][y][x]) then
                             table.insert(self.tilesObj, self.templates.block((x - 1) * 32, (y - 1) * 32))
                         end
                     end
@@ -139,9 +139,25 @@ function World:update(elapsed)
             o:update(elapsed)
         end
 
-        switch(o.type, {
-            ["geiser"] = function()
-                if o.meta.hitbox then 
+        if not registers.system.freemove then
+            switch(o.type, {
+                ["geiser"] = function()
+                    if o.meta.hitbox then 
+                        if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                            if not self.templates.player.isDamaged then
+                                self.templates.player.HP = self.templates.player.HP - 1
+                            end
+                            self.templates.player.isDamaged = true
+                        end
+                    end
+                end,
+                ["pearl"] = function()
+                    if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                        --lollipop.currentSave.game.user.game.totalPoints = lollipop.currentSave.game.user.game.totalPoints + 1
+                        table.remove(self.objects, _)
+                    end
+                end,
+                ["default"] = function()
                     if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
                         if not self.templates.player.isDamaged then
                             self.templates.player.HP = self.templates.player.HP - 1
@@ -149,22 +165,8 @@ function World:update(elapsed)
                         self.templates.player.isDamaged = true
                     end
                 end
-            end,
-            ["pearl"] = function()
-                if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
-                    --lollipop.currentSave.game.user.game.totalPoints = lollipop.currentSave.game.user.game.totalPoints + 1
-                    table.remove(self.objects, _)
-                end
-            end,
-            ["default"] = function()
-                if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
-                    if not self.templates.player.isDamaged then
-                        self.templates.player.HP = self.templates.player.HP - 1
-                    end
-                    self.templates.player.isDamaged = true
-                end
-            end
-        })
+            })
+        end
     end
 
     glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64

@@ -55,23 +55,6 @@ function Pufferfish:update(elapsed)
         self.hitbox.y = self.y - self.hitbox.offsetY
         self.hitbox.range.x = self.x
         self.hitbox.range.y = self.y
-        -- check bounds --
-        if self.x - self.hitbox.offsetX <= 0 then
-            self.direction = "right"
-        end
-        if self.x + qw >= love.graphics.getWidth() then
-            self.direction = "left"
-        end
-
-        for _, o in ipairs(world.tilesObj) do
-            if collision.rectRect(self.hitbox, o.hitbox) then
-                self.direction = self.direction == "right" and "left" or "right"
-            end
-        end
-        
-        if collision.circRect(self.hitbox.range, world.templates.player.hitbox) then
-            self.state = "transform"
-        end
 
         switch(self.direction, {
             ["left"] = function()
@@ -81,6 +64,39 @@ function Pufferfish:update(elapsed)
                 self.x = self.x + self.speed * elapsed
             end
         })
+
+        -- check bounds --
+        if self.x - self.hitbox.offsetX <= 0 then
+            self.direction = "right"
+        end
+        if self.x + qw >= love.graphics.getWidth() then
+            self.direction = "left"
+        end
+
+        
+        for _, o in ipairs(world.tilesObj) do
+            if collision.rectRect(o.hitbox, self.hitbox) then
+                --self.direction = self.direction == "right" and "left" or "right"
+                if self.hitbox.x + self.hitbox.w >= o.hitbox.x  then
+                    self.direction = "left"
+                end
+                if self.hitbox.x + self.hitbox.w >= o.hitbox.x + o.hitbox.w then
+                    self.direction = "right"
+                end
+            end 
+        end
+
+        --[[
+        for _, o in ipairs(world.tilesObj) do
+            if collision.rectRect(self.hitbox, o.hitbox) then
+                self.direction = self.direction == "right" and "left" or "right"
+            end
+        end
+        ]]--
+        
+        if collision.circRect(self.hitbox.range, world.templates.player.hitbox) then
+            self.state = "transform"
+        end
     elseif self.state == "transform" then
         self.frameTimer = self.frameTimer + elapsed
         if self.frameTimer >= self.frameSpeed then

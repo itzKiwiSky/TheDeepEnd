@@ -2,8 +2,8 @@
 <template>
  <object name="geiser" width="64" height="64">
   <properties>
-   <property name="attackCooldown" type="float" value="200"/>
-   <property name="attackTime" type="float" value="150"/>
+   <property name="attackCooldown" type="float" value="5.5"/>
+   <property name="attackTime" type="float" value="2.5"/>
    <property name="direction" type="int" value="1"/>
   </properties>
  </object>

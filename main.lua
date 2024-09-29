@@ -59,7 +59,8 @@ function love.initialize(args)
             levelEnded = false
         },
         system = {
-            showDebugHitbox = false
+            showDebugHitbox = false,
+            freemove = false,
         }
     }
 
@@ -110,6 +111,9 @@ function love.keypressed(k)
     if DEBUG_APP then
         if k == "f4" then
             registers.system.showDebugHitbox = not registers.system.showDebugHitbox
+        end
+        if k == "f5" then
+            registers.system.freemove = not registers.system.freemove
         end
     end
 end

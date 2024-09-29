@@ -32,7 +32,7 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 322,
+                "x": 328.875,
                 "y": 941.25
             }
         },
@@ -40,11 +40,19 @@
             "expandedObjectLayers": [
                 3
             ],
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 569,
+                "y": 383
+            }
+        },
+        "tmx/level3.tmx": {
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 313.3333333333333,
-                "y": 532
+                "x": 410,
+                "y": 609.3333333333333
             }
         },
         "tmx/level_debug.tmx": {
@@ -75,7 +83,7 @@
     "last.externalTilesetPath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tsx",
     "last.imagePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/images",
     "last.objectTemplatePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/templates",
-    "map.height": 25,
+    "map.height": 50,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "map.width": 20,
@@ -85,11 +93,12 @@
         "tsx/blocks.tsx"
     ],
     "project": "milesdeep.tiled-project",
-    "property.type": "int",
+    "property.type": "string",
     "recentFiles": [
+        "tmx/level3.tmx",
+        "tsx/blocks.tsx",
         "tmx/level1.tmx",
         "tmx/level2.tmx",
-        "tsx/blocks.tsx",
         "tmx/template.tmx",
         "tmx/level_debug.tmx",
         "level_debug.tmx"

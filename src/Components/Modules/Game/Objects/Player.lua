@@ -43,6 +43,9 @@ function Player:draw()
     love.graphics.setBlendMode("add")
         love.graphics.draw(self.partcles.bubbles, (self.x + qw / 2) - 16, self.y - 8, 0, 0.3, 0.3)
     love.graphics.setBlendMode("alpha")
+    if registers.system.freemove then
+        love.graphics.setColor(0, 0.8, 0.45, 1)
+    end
     if self.isDamaged then
         love.graphics.setColor(0.5, 0.5, 0.5, 1)
     end
@@ -61,7 +64,6 @@ end
 
 function Player:update(elapsed)
     local qx, qy, qw, qh = self.diverAssets.quads[1]:getViewport()
-    self.y = self.y + self.gravity * elapsed
     self.partcles.bubbles:update(elapsed)
 
     if self.isDamaged then
@@ -82,26 +84,44 @@ function Player:update(elapsed)
         self.x = love.graphics.getWidth() - qw
     end
 
-    if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
-        -- touch shit --
-    else
-        if love.keyboard.isDown("left", "a") then
-            self.x = self.x - self.moveSpeed * elapsed
-            self.mirrored = true
-            self.gravity = 30
-            self.partcles.bubbles:stop()
-        elseif love.keyboard.isDown("right", "d") then
-            self.x = self.x + self.moveSpeed * elapsed
-            self.mirrored = false
-            self.gravity = 30
-            self.partcles.bubbles:stop()
-        elseif love.keyboard.isDown("down", "space", "s") then
-            self.gravity = 70
-            self.partcles.bubbles:start()
-        else
-            self.gravity = 30
-            self.partcles.bubbles:stop()
+    if registers.system.freemove then
+        local up, down, left, right = love.keyboard.isDown("w", "up"), love.keyboard.isDown("s", "down"), love.keyboard.isDown("a", "left"), love.keyboard.isDown("d", "right")
+
+        if up then
+            self.y = self.y - 200 * elapsed
         end
+        if down then
+            self.y = self.y + 200 * elapsed
+        end
+        if left then
+            self.x = self.x - 200 * elapsed
+        end
+        if right then
+            self.x = self.x + 200 * elapsed
+        end
+    else
+        self.y = self.y + self.gravity * elapsed
+        if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
+            -- touch shit --
+        else
+            if love.keyboard.isDown("left", "a") then
+                self.x = self.x - self.moveSpeed * elapsed
+                self.mirrored = true
+                self.gravity = 30
+                self.partcles.bubbles:stop()
+            elseif love.keyboard.isDown("right", "d") then
+                self.x = self.x + self.moveSpeed * elapsed
+                self.mirrored = false
+                self.gravity = 30
+                self.partcles.bubbles:stop()
+            elseif love.keyboard.isDown("down", "space", "s") then
+                self.gravity = 70
+                self.partcles.bubbles:start()
+            else
+                self.gravity = 30
+                self.partcles.bubbles:stop()
+            end
+        end    
     end
 end
 

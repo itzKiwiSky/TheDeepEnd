@@ -36,20 +36,6 @@ function Fish:update(elapsed)
 
     self.hitbox.x = self.x - self.hitbox.offsetX
     self.hitbox.y = self.y - self.hitbox.offsetY
-    
-    -- check bounds --
-    if self.x - self.hitbox.offsetX <= 0 then
-        self.direction = "right"
-    end
-    if self.x + self.drawable:getWidth() >= love.graphics.getWidth() then
-        self.direction = "left"
-    end
-
-    for _, o in ipairs(world.tilesObj) do
-        if collision.rectRect(self.hitbox, o.hitbox) then
-            self.direction = self.direction == "right" and "left" or "right"
-        end
-    end
 
     switch(self.direction, {
         ["left"] = function()
@@ -59,6 +45,26 @@ function Fish:update(elapsed)
             self.x = self.x + self.speed * elapsed
         end
     })
+    
+    -- check bounds --
+    for _, o in ipairs(world.tilesObj) do
+        if collision.rectRect(o.hitbox, self.hitbox) then
+            --self.direction = self.direction == "right" and "left" or "right"
+            if self.hitbox.x + self.hitbox.w >= o.hitbox.x  then
+                self.direction = "left"
+            end
+            if self.hitbox.x + self.hitbox.w >= o.hitbox.x + o.hitbox.w then
+                self.direction = "right"
+            end
+        end 
+    end
+
+    if self.x - self.hitbox.offsetX <= 0 then
+        self.direction = "right"
+    end
+    if self.x + self.drawable:getWidth() >= love.graphics.getWidth() then
+        self.direction = "left"
+    end
 end
 
 return setmetatable(Fish, { __call = function(_, ...) return _new(...) end })

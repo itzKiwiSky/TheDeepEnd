@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level2.tmx",
+    "activeFile": "tsx/blocks.tsx",
     "expandedProjectPaths": [
-        "templates",
         "tsx",
         "tmx",
+        "templates",
         "."
     ],
     "fileStates": {
@@ -26,11 +26,14 @@
             "scaleInDock": 1
         },
         "tmx/level1.tmx": {
-            "scale": 2,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 275.75,
-                "y": 937.5
+                "x": 322,
+                "y": 941.25
             }
         },
         "tmx/level2.tmx": {
@@ -38,10 +41,10 @@
                 3
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 444.6666666666667,
-                "y": 702
+                "x": 313.3333333333333,
+                "y": 532
             }
         },
         "tmx/level_debug.tmx": {
@@ -65,7 +68,7 @@
         },
         "tsx/blocks.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 2
         }
     },
     "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/data/levels",
@@ -78,15 +81,16 @@
     "map.width": 20,
     "openFiles": [
         "tmx/level1.tmx",
-        "tmx/level2.tmx"
+        "tmx/level2.tmx",
+        "tsx/blocks.tsx"
     ],
     "project": "milesdeep.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "tmx/level1.tmx",
         "tmx/level2.tmx",
-        "tmx/template.tmx",
         "tsx/blocks.tsx",
+        "tmx/template.tmx",
         "tmx/level_debug.tmx",
         "level_debug.tmx"
     ],

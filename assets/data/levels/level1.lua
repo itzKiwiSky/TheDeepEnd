@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 4,
-  nextobjectid = 10,
+  nextobjectid = 14,
   properties = {
     ["next_phase"] = "level2"
   },
@@ -232,6 +232,51 @@ return {
             ["attackCooldown"] = 5.5,
             ["attackTime"] = 2.5,
             ["direction"] = 4
+          }
+        },
+        {
+          id = 11,
+          name = "pearl",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 448,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["points"] = 5
+          }
+        },
+        {
+          id = 12,
+          name = "pearl",
+          type = "",
+          shape = "rectangle",
+          x = 352,
+          y = 896,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["points"] = 5
+          }
+        },
+        {
+          id = 13,
+          name = "pearl",
+          type = "",
+          shape = "rectangle",
+          x = 576,
+          y = 288,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["points"] = 5
           }
         }
       }

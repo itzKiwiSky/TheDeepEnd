@@ -60,6 +60,7 @@ function Player:draw()
 end
 
 function Player:update(elapsed)
+    local qx, qy, qw, qh = self.diverAssets.quads[1]:getViewport()
     self.y = self.y + self.gravity * elapsed
     self.partcles.bubbles:update(elapsed)
 
@@ -73,6 +74,13 @@ function Player:update(elapsed)
 
     self.hitbox.x = self.x - self.hitbox.offsetX
     self.hitbox.y = self.y - self.hitbox.offsetY
+
+    if self.x - self.hitbox.offsetX <= 0 then
+        self.x = self.hitbox.offsetX
+    end
+    if self.x + qw >= love.graphics.getWidth() then
+        self.x = love.graphics.getWidth() - qw
+    end
 
     if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
         -- touch shit --

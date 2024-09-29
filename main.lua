@@ -37,7 +37,11 @@ function love.initialize(args)
                         usertoken = ""
                     },
                 }
-            }
+            },
+            game = {
+                totalPoints = 0,
+            },
+            achievments = {},
         }
     }
 

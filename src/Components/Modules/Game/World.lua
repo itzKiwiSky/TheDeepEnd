@@ -15,24 +15,6 @@ local function _convert2D(data, w, h)
     return tiledata
 end
 
-local function printGrid(grid)
-    for i = 1, #grid do
-        for j = 1, #grid[i] do
-            io.write(grid[i][j] .. " ")
-        end
-        io.write("\n")
-    end
-    io.write("\n")
-end
-
-local function getObject(data, object)
-    for _, o in pairs(data) do
-        if o.name == object then
-            return o
-        end
-    end
-end
-
 function World:init(levelfile)
     local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
     self.templates = {
@@ -40,7 +22,8 @@ function World:init(levelfile)
         gamerfish = require 'src.Components.Modules.Game.Objects.Fish',
         geiser = require 'src.Components.Modules.Game.Objects.Geiser',
         pufferfish = require 'src.Components.Modules.Game.Objects.Pufferfish',
-        block = require 'src.Components.Modules.Game.Objects.Block'
+        block = require 'src.Components.Modules.Game.Objects.Block',
+        pearl = require 'src.Components.Modules.Game.Objects.Pearl'
     }
 
     self.tiledfile = {}
@@ -59,9 +42,6 @@ function World:init(levelfile)
     self.heightInTiles = 0
     self.width = 0
     self.height = 0
-
-    --self.assets.levelEnding = levelEnd(0, self.height - 32, self.width, 32, self.tiledfile.properties["next_phase"])
-
 end
 
 function World:build(levelfilename)
@@ -88,7 +68,7 @@ function World:build(levelfilename)
                 for x = 1, self.tiledfile.width, 1 do
                     if self.tiles[layer.name][y][x] ~= 0 then
                         self.batches[layer.name]:add(self.assets.quads[self.tiles[layer.name][y][x]], (x - 1) * 32, (y - 1) * 32)
-                        if layer.name == "tilesfg" then
+                        if layer.name == "tilesfg" and not table.contains({28, 29, 30, 31}, self.tiles[layer.name][y][x]) then
                             table.insert(self.tilesObj, self.templates.block((x - 1) * 32, (y - 1) * 32))
                         end
                     end
@@ -110,6 +90,9 @@ function World:build(levelfilename)
                             end,
                             ["pufferfish"] = function()
                                 table.insert(self.objects, self.templates.pufferfish(o.x, o.y, o.properties.range))
+                            end,
+                            ["pearl"] = function()
+                                table.insert(self.objects, self.templates.pearl(o.x, o.y, o.properties.points))
                             end
                         })
                     end
@@ -155,8 +138,25 @@ function World:update(elapsed)
         if o.update then
             o:update(elapsed)
         end
-        if o.meta then
-            if o.meta.state == "attack" then 
+
+        switch(o.type, {
+            ["geiser"] = function()
+                if o.meta.state == "attack" then 
+                    if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                        if not self.templates.player.isDamaged then
+                            self.templates.player.HP = self.templates.player.HP - 1
+                        end
+                        self.templates.player.isDamaged = true
+                    end
+                end
+            end,
+            ["pearl"] = function()
+                if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                    --lollipop.currentSave.game.user.game.totalPoints = lollipop.currentSave.game.user.game.totalPoints + 1
+                    table.remove(self.objects, _)
+                end
+            end,
+            ["default"] = function()
                 if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
                     if not self.templates.player.isDamaged then
                         self.templates.player.HP = self.templates.player.HP - 1
@@ -164,15 +164,9 @@ function World:update(elapsed)
                     self.templates.player.isDamaged = true
                 end
             end
-        else
-            if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
-                if not self.templates.player.isDamaged then
-                    self.templates.player.HP = self.templates.player.HP - 1
-                end
-                self.templates.player.isDamaged = true
-            end
-        end
+        })
     end
+    
     glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64
     
     if collision.rectRect(self.assets.levelEnding, self.templates.player.hitbox) then

@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 4,
-  nextobjectid = 5,
+  nextobjectid = 7,
   properties = {},
   tilesets = {
     {
@@ -140,7 +140,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 150
+            ["range"] = 360
           }
         },
         {
@@ -155,7 +155,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 150
+            ["range"] = 360
           }
         },
         {
@@ -183,7 +183,37 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 150
+            ["range"] = 360
+          }
+        },
+        {
+          id = 5,
+          name = "pearl",
+          type = "",
+          shape = "rectangle",
+          x = 84.6667,
+          y = 469.333,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["points"] = 10
+          }
+        },
+        {
+          id = 6,
+          name = "pearl",
+          type = "",
+          shape = "rectangle",
+          x = 512,
+          y = 448,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["points"] = 5
           }
         }
       }

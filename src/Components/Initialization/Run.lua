@@ -1,5 +1,6 @@
 require("src.Components.Initialization.Imports")()
 require("src.Components.Initialization.AddonLoad")()
+local volControl = require 'src.Components.Modules.System.VolumeControlUI'
 local console = require 'src.Components.Initialization.Console'
 DEBUG_APP = love.filesystem.isFused() and false or true
 function love.run()
@@ -13,6 +14,8 @@ function love.run()
     if love.initialize then 
         love.initialize(love.arg.parseGameArguments(arg), arg)
     end
+
+    volControlInterface = volControl()
 
     if love.timer then love.timer.step() end
 
@@ -36,6 +39,7 @@ function love.run()
                         if a == "'" then
                             debugcmd.active = not debugcmd.active
                         end
+                        volControlInterface:keypressed(a)
                     end
                 end
                 love.handlers[name](a,b,c,d,e,f)
@@ -48,6 +52,7 @@ function love.run()
 
         if love.update then 
             love.update(elapsed)
+            volControlInterface:update(elapsed)
 
             if DEBUG_APP then
                 debugcmd:updateInterface(elapsed)
@@ -66,6 +71,8 @@ function love.run()
                 debugcmd:draw()
                 love.graphics.print("FPS : " .. love.timer.getFPS(), 5, 5)
             end
+
+            volControlInterface:draw()
 
             love.graphics.present()
         end

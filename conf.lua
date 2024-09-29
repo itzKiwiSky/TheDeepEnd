@@ -21,7 +21,7 @@ function love.conf(w)
     w.window.width          =       getOS() == "Android" and 1 or 640
     w.window.height         =       getOS() == "Android" and 2 or 800
     w.window.icon           =       "icon.png"
-    w.window.title          =       "23 Miles Deep: Mariana Trench Mission"
+    w.window.title          =       "The lost deep"
     w.window.x              =       nil
     w.window.y              =       nil
     w.window.borderless     =       false
@@ -35,7 +35,7 @@ function love.conf(w)
 
     --% Storage %--
     w.externalstorage       =       true
-    w.identity              =       "com.kiwiworlddomination.marianatrenchmission"
+    w.identity              =       "com.kiwiworlddomination.thedeepend"
 
     --% Modules %--
     w.modules.audio         =       true

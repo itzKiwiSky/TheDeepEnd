@@ -94,7 +94,7 @@ function love.initialize(args)
     love.filesystem.createDirectory("editor/levels")
 
     gamestate.registerEvents()
-    gamestate.switch(PlayState)
+    gamestate.switch(SplashState)
 end
 
 function love.update(elapsed)

@@ -25,6 +25,7 @@ local function _new(x, y, direction, attackTime, attackCooldown)
     self.meta = {}
     self.meta.timer = self.attackCooldown
     self.meta.state = "idle"
+    self.meta.hitbox = false
     return self
 end
 
@@ -43,7 +44,15 @@ function Geiser:draw()
     love.graphics.setBlendMode("alpha")
 
     if registers.system.showDebugHitbox then
-        love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+        if self.meta.hitbox then
+            love.graphics.setColor(1, 0, 0, 1)
+            love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+            love.graphics.setColor(1, 0, 0, 0.5)
+            love.graphics.rectangle("fill", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+            love.graphics.setColor(1, 1, 1, 1)
+        else
+            love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)
+        end
     end
 end
 
@@ -70,10 +79,14 @@ function Geiser:update(elapsed)
         end
     elseif self.meta.state == "attack" then
         self.meta.timer = self.meta.timer - elapsed
+        if self.meta.timer <= self.attackTime - 0.2 then
+            self.meta.hitbox = true
+        end
         if self.meta.timer <= 0 then
             self.meta.state = "idle"
             self.assets.particles:stop()
             self.meta.timer = self.attackCooldown
+            self.meta.hitbox = false
         end
     end
     

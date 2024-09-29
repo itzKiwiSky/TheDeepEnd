@@ -141,7 +141,7 @@ function World:update(elapsed)
 
         switch(o.type, {
             ["geiser"] = function()
-                if o.meta.state == "attack" then 
+                if o.meta.hitbox then 
                     if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
                         if not self.templates.player.isDamaged then
                             self.templates.player.HP = self.templates.player.HP - 1
@@ -166,7 +166,7 @@ function World:update(elapsed)
             end
         })
     end
-    
+
     glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64
     
     if collision.rectRect(self.assets.levelEnding, self.templates.player.hitbox) then

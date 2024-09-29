@@ -95,8 +95,8 @@
     "project": "milesdeep.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "tmx/level3.tmx",
         "tsx/blocks.tsx",
+        "tmx/level3.tmx",
         "tmx/level1.tmx",
         "tmx/level2.tmx",
         "tmx/template.tmx",

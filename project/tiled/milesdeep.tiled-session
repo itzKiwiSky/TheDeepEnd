@@ -5,10 +5,11 @@
     },
     "activeFile": "tmx/level4.tmx",
     "expandedProjectPaths": [
+        ".",
+        "tsx",
         "tmx",
         "templates",
-        ".",
-        "tsx"
+        "worlds"
     ],
     "fileStates": {
         "": {
@@ -32,7 +33,7 @@
             "scale": 4,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 328.875,
+                "x": 335.625,
                 "y": 941.25
             }
         },
@@ -43,7 +44,7 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 569,
+                "x": 569.5,
                 "y": 383
             }
         },
@@ -54,7 +55,7 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 347,
+                "x": 347.5,
                 "y": 421
             }
         },
@@ -62,8 +63,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 317,
-                "y": 752
+                "x": 508,
+                "y": 757
             }
         },
         "tmx/level_debug.tmx": {
@@ -94,6 +95,10 @@
     "last.externalTilesetPath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tsx",
     "last.imagePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/images",
     "last.objectTemplatePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/templates",
+    "last.worldFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/worlds",
+    "loadedWorlds": [
+        "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/worlds/main_progression.world"
+    ],
     "map.height": 32,
     "map.lastUsedExportFilter": "Ficheiros Lua (*.lua)",
     "map.lastUsedFormat": "tmx",

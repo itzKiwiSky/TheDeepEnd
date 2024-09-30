@@ -31,6 +31,8 @@ function World:init(levelfile)
     self.assets = {}
     self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/blocks_tileset")
     self.assets.endGradient = love.graphics.newGradient("vertical", {255, 255, 255, 255}, {255, 255, 255, 0})
+    self.assets.endParticles = require 'src.Components.Modules.Game.Particles.EndParticles'
+    self.assets.endParticles:setEmissionArea("uniform", love.graphics.getWidth(), 5, 0, false)
 
     self.tiles = {}
     self.batches = {}
@@ -118,6 +120,7 @@ function World:draw()
     end
 
     love.graphics.setBlendMode("add")
+    love.graphics.draw(self.assets.endParticles, 0, self.height)
     love.graphics.draw(self.assets.endGradient, 0, self.height, 0, self.width, -glowAnimValue)
     love.graphics.setBlendMode("alpha")
 
@@ -133,6 +136,7 @@ function World:draw()
 end
 
 function World:update(elapsed)
+    self.assets.endParticles:update(elapsed)
     self.templates.player:update(elapsed)
     for _, o in pairs(self.objects) do
         if o.update then

@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level0_3.tmx",
+    "activeFile": "tmx/level0_4.tmx",
     "expandedProjectPaths": [
+        "tsx",
         "templates",
         "worlds",
-        "tmx",
         ".",
-        "tsx"
+        "tmx"
     ],
     "fileStates": {
         "": {
@@ -51,9 +51,6 @@
             }
         },
         "tmx/level0_3.tmx": {
-            "expandedObjectLayers": [
-                3
-            ],
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
@@ -62,11 +59,14 @@
             }
         },
         "tmx/level0_4.tmx": {
-            "scale": 1,
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 391,
-                "y": -153
+                "x": 420,
+                "y": 143.99999999999994
             }
         },
         "tmx/level1.tmx": {
@@ -155,23 +155,24 @@
         "tmx/level0_0.tmx",
         "tmx/level0_3.tmx",
         "tmx/level0_1.tmx",
-        "tmx/level0_2.tmx"
+        "tmx/level0_2.tmx",
+        "tmx/level0_4.tmx"
     ],
     "project": "milesdeep.tiled-project",
     "property.type": "float",
     "recentFiles": [
         "tmx/level_debug.tmx",
         "tmx/level0_0.tmx",
-        "tmx/level0_2.tmx",
-        "tmx/level0_1.tmx",
         "tmx/level0_3.tmx",
+        "tmx/level0_1.tmx",
+        "tmx/level0_2.tmx",
+        "tmx/level0_4.tmx",
         "tmx/level1.tmx",
         "tmx/level2.tmx",
         "tmx/level3.tmx",
         "tmx/level4.tmx",
         "tsx/blocks.tsx",
-        "tmx/template.tmx",
-        "level_debug.tmx"
+        "tmx/template.tmx"
     ],
     "tileset.lastUsedFilter": "Ficheiros de conjunto de tiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx"

@@ -11,7 +11,11 @@ return {
   tileheight = 32,
   nextlayerid = 4,
   nextobjectid = 7,
-  properties = {},
+  properties = {
+    ["left_exit"] = "none",
+    ["next_phase"] = "level3",
+    ["right_exit"] = "none"
+  },
   tilesets = {
     {
       name = "blocks",
@@ -125,7 +129,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {
-        ["next_phase"] = "levelname"
+        ["next_phase"] = "level3"
       },
       objects = {
         {
@@ -140,7 +144,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 360
+            ["range"] = 100
           }
         },
         {
@@ -155,7 +159,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 360
+            ["range"] = 100
           }
         },
         {
@@ -183,7 +187,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["range"] = 360
+            ["range"] = 100
           }
         },
         {

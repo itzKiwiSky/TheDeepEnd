@@ -9,7 +9,7 @@ function MenuState:draw()
 end
 
 function MenuState:update(elapsed)
-
+    
 end
 
 return MenuState

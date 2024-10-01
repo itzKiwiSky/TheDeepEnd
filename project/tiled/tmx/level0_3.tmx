@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="15">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="16">
  <editorsettings>
-  <export target="../../../assets/data/levels/level4.lua" format="lua"/>
+  <export target="../../../assets/data/levels/level0_3.lua" format="json1"/>
  </editorsettings>
  <properties>
+  <property name="left_exit" value="level4-1"/>
   <property name="next_phase" value="level5"/>
+  <property name="right_exit" value="none"/>
  </properties>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>
  <layer id="2" name="tilesbg" width="20" height="32">
@@ -57,29 +59,29 @@
 5,5,5,5,5,9,0,0,0,0,0,0,7,5,5,5,5,5,5,5,
 5,5,5,5,9,0,0,0,0,0,0,0,0,4,5,5,5,5,5,5,
 5,5,5,9,0,0,0,0,0,0,0,0,0,7,5,5,5,5,5,5,
-8,8,9,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,5,5,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,5,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-5,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,5,
-5,5,5,3,0,0,0,0,0,0,0,0,0,0,0,1,2,5,5,5,
-5,5,5,5,2,3,0,0,0,0,0,0,0,0,1,5,5,5,5,5,
-5,5,5,5,5,5,2,3,0,0,0,0,0,1,5,5,5,5,5,5
+5,8,9,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,5,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,
+5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,
+5,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,
+5,5,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,
+5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,
+5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+5,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+5,5,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,
+5,5,5,5,2,3,0,0,0,0,0,0,0,0,0,0,1,2,5,5,
+5,5,5,5,5,5,3,0,0,0,0,0,0,0,1,2,5,5,5,5,
+5,5,5,5,5,5,6,0,0,0,0,0,1,2,5,5,5,5,5,5
 </data>
  </layer>
  <objectgroup id="3" name="objects">
@@ -89,7 +91,7 @@
     <property name="range" type="int" value="64"/>
    </properties>
   </object>
-  <object id="3" template="../templates/pufferfish.tx" x="0" y="576">
+  <object id="3" template="../templates/pufferfish.tx" x="64" y="576">
    <properties>
     <property name="range" type="int" value="64"/>
    </properties>
@@ -104,12 +106,7 @@
     <property name="range" type="int" value="64"/>
    </properties>
   </object>
-  <object id="6" template="../templates/pufferfish.tx" x="480" y="864">
-   <properties>
-    <property name="range" type="int" value="64"/>
-   </properties>
-  </object>
-  <object id="7" template="../templates/pufferfish.tx" x="544" y="672">
+  <object id="7" template="../templates/pufferfish.tx" x="480" y="672">
    <properties>
     <property name="range" type="int" value="64"/>
    </properties>
@@ -119,27 +116,22 @@
     <property name="range" type="int" value="64"/>
    </properties>
   </object>
-  <object id="9" template="../templates/pufferfish.tx" x="544" y="512">
+  <object id="9" template="../templates/pufferfish.tx" x="512" y="512">
    <properties>
     <property name="range" type="int" value="64"/>
    </properties>
   </object>
-  <object id="10" template="../templates/gamerfish.tx" x="32" y="672">
+  <object id="10" template="../templates/gamerfish.tx" x="128" y="672">
    <properties>
     <property name="speed" type="int" value="50"/>
    </properties>
   </object>
-  <object id="11" template="../templates/gamerfish.tx" x="576" y="576">
+  <object id="11" template="../templates/gamerfish.tx" x="448" y="576">
    <properties>
     <property name="speed" type="int" value="50"/>
    </properties>
   </object>
   <object id="12" template="../templates/gamerfish.tx" x="128" y="480">
-   <properties>
-    <property name="speed" type="int" value="50"/>
-   </properties>
-  </object>
-  <object id="13" template="../templates/gamerfish.tx" x="154" y="917">
    <properties>
     <property name="speed" type="int" value="50"/>
    </properties>

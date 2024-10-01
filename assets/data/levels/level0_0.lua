@@ -12,7 +12,9 @@ return {
   nextlayerid = 4,
   nextobjectid = 14,
   properties = {
-    ["next_phase"] = "level2"
+    ["left_exit"] = "none",
+    ["next_phase"] = "level2",
+    ["right_exit"] = "none"
   },
   tilesets = {
     {

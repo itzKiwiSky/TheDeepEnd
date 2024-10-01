@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="7">
  <editorsettings>
-  <export target="../../../assets/data/levels/level2.lua" format="lua"/>
+  <export target="../../../assets/data/levels/level0_1.lua" format="lua"/>
  </editorsettings>
+ <properties>
+  <property name="left_exit" value="none"/>
+  <property name="next_phase" value="level3"/>
+  <property name="right_exit" value="none"/>
+ </properties>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>
  <layer id="2" name="tilesbg" width="20" height="25">
   <properties>
@@ -67,7 +72,7 @@
  </layer>
  <objectgroup id="3" name="objects">
   <properties>
-   <property name="next_phase" value="levelname"/>
+   <property name="next_phase" value="level3"/>
   </properties>
   <object id="1" template="../templates/pufferfish.tx" x="128" y="416"/>
   <object id="2" template="../templates/pufferfish.tx" x="512" y="288"/>

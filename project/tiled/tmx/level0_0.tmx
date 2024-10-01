@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="14">
  <editorsettings>
-  <export target="../../../assets/data/levels/level1.lua" format="lua"/>
+  <export target="../../../assets/data/levels/level0_0.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="left_exit" value="none"/>
   <property name="next_phase" value="level2"/>
+  <property name="right_exit" value="none"/>
  </properties>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>
  <layer id="1" name="tilesbg" width="20" height="32">

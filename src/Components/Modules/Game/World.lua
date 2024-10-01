@@ -23,7 +23,8 @@ function World:init(levelfile)
         geiser = require 'src.Components.Modules.Game.Objects.Geiser',
         pufferfish = require 'src.Components.Modules.Game.Objects.Pufferfish',
         block = require 'src.Components.Modules.Game.Objects.Block',
-        pearl = require 'src.Components.Modules.Game.Objects.Pearl'
+        pearl = require 'src.Components.Modules.Game.Objects.Pearl',
+        bomb = require 'src.Components.Modules.Game.Objects.Bomb',
     }
 
     self.tiledfile = {}
@@ -95,6 +96,9 @@ function World:build(levelfilename)
                             end,
                             ["pearl"] = function()
                                 table.insert(self.objects, self.templates.pearl(o.x, o.y, o.properties.points))
+                            end,
+                            ["bomb"] = function()
+                                table.insert(self.objects, self.templates.bomb(o.x, o.y, o.height, o.properties.range))
                             end
                         })
                     end
@@ -157,8 +161,12 @@ function World:update(elapsed)
                 end,
                 ["pearl"] = function()
                     if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
-                        --lollipop.currentSave.game.user.game.totalPoints = lollipop.currentSave.game.user.game.totalPoints + 1
                         table.remove(self.objects, _)
+                    end
+                end,
+                ["bomb"] = function()
+                    if o.hitbox.type == "circle" then
+
                     end
                 end,
                 ["default"] = function()

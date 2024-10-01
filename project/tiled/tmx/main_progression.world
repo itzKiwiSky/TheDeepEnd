@@ -1,0 +1,31 @@
+{
+    "onlyShowAdjacentMaps": false,
+    "type": "world",
+    "maps": [
+        {
+            "fileName": "level0_0.tmx",
+            "x": 0,
+            "y": 0
+        },
+        {
+            "fileName": "level0_1.tmx",
+            "x": 0,
+            "y": 1024
+        },
+        {
+            "fileName": "level0_2.tmx",
+            "x": 0,
+            "y": 1824
+        },
+        {
+            "fileName": "level0_3.tmx",
+            "x": 0,
+            "y": 3424
+        },
+        {
+            "fileName": "level0_4.tmx",
+            "x": 0,
+            "y": 4448
+        }
+    ]
+}

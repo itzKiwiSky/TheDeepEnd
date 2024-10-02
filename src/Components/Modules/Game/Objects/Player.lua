@@ -100,28 +100,30 @@ function Player:update(elapsed)
             self.x = self.x + 200 * elapsed
         end
     else
-        self.y = self.y + self.gravity * elapsed
-        if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
-            -- touch shit --
-        else
-            if love.keyboard.isDown("left", "a") then
-                self.x = self.x - self.moveSpeed * elapsed
-                self.mirrored = true
-                self.gravity = 30
-                self.partcles.bubbles:stop()
-            elseif love.keyboard.isDown("right", "d") then
-                self.x = self.x + self.moveSpeed * elapsed
-                self.mirrored = false
-                self.gravity = 30
-                self.partcles.bubbles:stop()
-            elseif love.keyboard.isDown("down", "space", "s") then
-                self.gravity = 70
-                self.partcles.bubbles:start()
+        if self.HP > 0 then
+            self.y = self.y + self.gravity * elapsed
+            if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
+                -- touch shit --
             else
-                self.gravity = 30
-                self.partcles.bubbles:stop()
+                if love.keyboard.isDown("left", "a") then
+                    self.x = self.x - self.moveSpeed * elapsed
+                    self.mirrored = true
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                elseif love.keyboard.isDown("right", "d") then
+                    self.x = self.x + self.moveSpeed * elapsed
+                    self.mirrored = false
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                elseif love.keyboard.isDown("down", "space", "s") then
+                    self.gravity = 70
+                    self.partcles.bubbles:start()
+                else
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                end
             end
-        end    
+        end
     end
 end
 

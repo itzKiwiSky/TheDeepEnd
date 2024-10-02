@@ -11,7 +11,7 @@ local function _new(x, y)
     self.frame = 0
     self.explosionId = math.random(1,3)
     self.frameTimer = 0
-    self.frameSpeed = 0.1
+    self.frameSpeed = 0.05
     self.lastFrame = false
     self.maxFrames = 11
     return self

@@ -15,6 +15,15 @@ local function _convert2D(data, w, h)
     return tiledata
 end
 
+local function _getObjectByType(this, type)
+    for _, c in pairs(this.objects) do
+        if c.type == type then
+            return _, c
+        end
+    end
+    return nil
+end
+
 function World:init(levelfile)
     local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
     self.templates = {
@@ -25,6 +34,7 @@ function World:init(levelfile)
         block = require 'src.Components.Modules.Game.Objects.Block',
         pearl = require 'src.Components.Modules.Game.Objects.Pearl',
         bomb = require 'src.Components.Modules.Game.Objects.Bomb',
+        explosion = require 'src.Components.Modules.Game.Objects.Explosion'
     }
 
     self.tiledfile = {}
@@ -45,6 +55,8 @@ function World:init(levelfile)
     self.heightInTiles = 0
     self.width = 0
     self.height = 0
+    self.spawnX = 0
+    self.spawnY = 0
 end
 
 function World:build(levelfilename)
@@ -81,6 +93,7 @@ function World:build(levelfilename)
             --layer.objects
             for _, o in pairs(layer.objects) do
                 if o.name == "PlayerSpawn" then
+                    self.spawnX, self.spawnY = o.x, o.y
                     self.templates.player:init(o.x, o.y)
                 else
                     if self.templates[o.name] then
@@ -166,19 +179,36 @@ function World:update(elapsed)
                 end,
                 ["bomb"] = function()
                     if o.hitbox.type == "circle" then
-
+                        if collision.circRect(o.hitbox, self.templates.player.hitbox) then
+                            if not self.templates.player.isDamaged then
+                                self.templates.player.HP = 0
+                                table.remove(self.objects, _)
+                                table.insert(self.objects, self.templates.explosion(o.x, o.y))
+                            end
+                            self.templates.player.isDamaged = true
+                        end
                     end
                 end,
                 ["default"] = function()
-                    if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
-                        if not self.templates.player.isDamaged then
-                            self.templates.player.HP = self.templates.player.HP - 1
+                    if o.hitbox then
+                        if collision.rectRect(self.templates.player.hitbox, o.hitbox) then
+                            if not self.templates.player.isDamaged then
+                                self.templates.player.HP = self.templates.player.HP - 1
+                            end
+                            self.templates.player.isDamaged = true
                         end
-                        self.templates.player.isDamaged = true
                     end
                 end
             })
         end
+
+        switch(o.type, {
+            ["explosion"] = function()
+                if o.lastFrame then
+                    table.remove(self.objects, _)
+                end
+            end
+        })
     end
 
     glowAnimValue = math.cos(math.sin(love.timer.getTime()) * 1.2) * 64

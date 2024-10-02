@@ -1,5 +1,15 @@
 PlayState = {}
 
+local function reset()
+    world:init()
+    world:build("assets/data/levels/level0_4.lua")
+    camScroll.x = world.templates.player.x
+    camScroll.y = world.templates.player.y
+
+    world.templates.player.HP = world.templates.player.maxHP
+    world.templates.player:init(world.spawnX, world.spawnY)
+end
+
 function PlayState:init()
     world = require 'src.Components.Modules.Game.World'
 
@@ -19,10 +29,7 @@ function PlayState:init()
 end
 
 function PlayState:enter()
-    world:init()
-    world:build("assets/data/levels/level0_4.lua")
-    camScroll.x = world.templates.player.x
-    camScroll.y = world.templates.player.y
+    reset()
 end
 
 function PlayState:draw()
@@ -89,6 +96,12 @@ end
 function PlayState:keypressed(k)
     if k == "escape" then
         registers.user.paused = not registers.user.paused
+    end
+
+    if world.templates.player.HP <= 0 then
+        if k == "space" then
+            reset()
+        end
     end
 end
 

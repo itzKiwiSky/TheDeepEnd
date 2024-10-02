@@ -5,11 +5,11 @@
     },
     "activeFile": "tmx/level0_4.tmx",
     "expandedProjectPaths": [
-        "templates",
-        "worlds",
-        "tsx",
         "tmx",
-        "."
+        ".",
+        "tsx",
+        "worlds",
+        "templates"
     ],
     "fileStates": {
         "": {
@@ -65,7 +65,7 @@
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 442.66666666666663,
+                "x": 137.33333333333331,
                 "y": 423.99999999999994
             }
         },

@@ -9,9 +9,9 @@ local function _new(x, y)
     self.type = "explosion"
     self.assets.sheet, self.assets.quads = love.graphics.getHashedQuads("assets/images/explosion")
     self.frame = 0
-    self.explosionId = math.random(1,3)
+    self.explosionId = math.random(1, 3)
     self.frameTimer = 0
-    self.frameSpeed = 0.05
+    self.frameSpeed = 0.01
     self.lastFrame = false
     self.maxFrames = 11
     return self

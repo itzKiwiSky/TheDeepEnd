@@ -5,7 +5,7 @@
  </editorsettings>
  <properties>
   <property name="left_exit" value="none"/>
-  <property name="next_phase" value="level3"/>
+  <property name="next_phase" value="0_2"/>
   <property name="right_exit" value="none"/>
  </properties>
  <tileset firstgid="1" source="../tsx/blocks.tsx"/>

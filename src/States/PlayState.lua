@@ -26,6 +26,10 @@ function PlayState:init()
         xMultiplier = 0.04,
         yMultiplier = 0.04
     }
+    
+
+    GlobalTouch:setHitBox(0, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
+    GlobalTouch:setHitBox(love.graphics.getWidth() / 2, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
 end
 
 function PlayState:enter()
@@ -55,6 +59,8 @@ function PlayState:draw()
             love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
         love.graphics.setColor(1, 1, 1, 1)
     end
+
+    GlobalTouch:display()
 end
 
 function PlayState:update(elapsed)

@@ -20,6 +20,7 @@ return function()
     knifeevent = require 'libraries.KnifeEvent'
     json = require 'libraries.json'
     luafft = require 'libraries.luafft'
+    multouch = require 'libraries.multouch'
     lume = require 'libraries.Lume'
     nativefs = require 'libraries.nativefs'
     timer = require 'libraries.timer'

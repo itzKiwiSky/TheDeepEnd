@@ -49,13 +49,15 @@ function Player:draw()
     if self.isDamaged then
         love.graphics.setColor(0.5, 0.5, 0.5, 1)
     end
-    love.graphics.draw(
-        self.diverAssets.image, 
-        self.diverAssets.quads[not self.harpoon and 1 or 2], 
-        self.x, self.y, not self.mirrored and math.rad(45) or math.rad(-45),
-        not self.mirrored and 1.5 or -1.5, 1.5, 
-        qw / 2, qh / 2
-    )
+    if self.HP > 0 then
+        love.graphics.draw(
+            self.diverAssets.image, 
+            self.diverAssets.quads[not self.harpoon and 1 or 2], 
+            self.x, self.y, not self.mirrored and math.rad(45) or math.rad(-45),
+            not self.mirrored and 1.5 or -1.5, 1.5, 
+            qw / 2, qh / 2
+        )
+    end
     love.graphics.setColor(1, 1, 1, 1)
     if registers.system.showDebugHitbox then
         love.graphics.rectangle("line", self.hitbox.x, self.hitbox.y, self.hitbox.w, self.hitbox.h)

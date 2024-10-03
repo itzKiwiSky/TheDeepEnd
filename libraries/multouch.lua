@@ -28,7 +28,7 @@ end
 --&public&--
 --&low level&--
 function touches.new(_limitOfTouches) --constructor
-    assert(type(_limitOfTouches) ~= "number", "bad argument to #1 in touches.new function (number expected got " .. type(_limitOfTouches) .. ")")
+    assert(type(_limitOfTouches) == "number", "bad argument to #1 in touches.new function (number expected got " .. type(_limitOfTouches) .. ")")
     return setmetatable({
         touches = {},
         areas = {},

@@ -20,6 +20,8 @@ function love.initialize(args)
     LanguageController = require 'src.Components.Modules.System.LanguageManager'
     connectGJ = require 'src.Components.Modules.API.InitializeGJ'
 
+    GlobalTouch = multouch.new(3)
+
     fontcache.init()
 
     lollipop.currentSave.game = {
@@ -94,7 +96,7 @@ function love.initialize(args)
     love.filesystem.createDirectory("editor/levels")
 
     gamestate.registerEvents()
-    gamestate.switch(PlayState)
+    gamestate.switch(MenuState)
 end
 
 function love.update(elapsed)

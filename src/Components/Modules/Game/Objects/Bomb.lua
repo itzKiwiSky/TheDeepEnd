@@ -21,6 +21,15 @@ local function _new(x, y, height, range)
         r = 42
     }
 
+    self.hitboxRange = {
+        type = "circle",
+        x = 64,
+        y = 64,
+        offsetX = 0,
+        offsetY = 0,
+        r = range
+    }
+
     for cy = self.y, self.y + self.h, 32 do
         --table.insert(self.assets.chains, {})
         if cy <= self.y then
@@ -67,7 +76,12 @@ function Bomb:update(elapsed)
     self.hitbox.x = self.x - self.hitbox.offsetX
     self.hitbox.y = self.y - self.hitbox.offsetY
 
-    
+    self.hitboxRange.x = self.x - self.hitboxRange.offsetX
+    self.hitboxRange.y = self.y - self.hitboxRange.offsetY
+
+    for _, c in ipairs(self.assets.chains) do
+        c.x = math.cos(elapsed)
+    end
 end
 
 return setmetatable(Bomb, { __call = function(_, ...) return _new(...) end })

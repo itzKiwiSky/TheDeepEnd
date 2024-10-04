@@ -1,8 +1,10 @@
 PlayState = {}
 
+PlayState.currentLevel = 0
+
 local function reset()
     world:init()
-    world:build("assets/data/levels/level0_4.lua")
+    world:build("assets/data/levels/level0_" .. PlayState.currentLevel .. ".lua")
     camScroll.x = world.templates.player.x
     camScroll.y = world.templates.player.y
 
@@ -15,6 +17,9 @@ function PlayState:init()
 
     heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/heart_hud")
     harpoonHud = love.graphics.newImage("assets/images/harpoon.png")
+    pauseButton = love.graphics.newImage("assets/images/pauseButton.png")
+
+    fnt_gameFont = fontcache.getFont("phoenixbios", 30)
 
     viewcam = camera()
 
@@ -28,8 +33,10 @@ function PlayState:init()
     }
     
 
-    GlobalTouch:setHitBox(0, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
-    GlobalTouch:setHitBox(love.graphics.getWidth() / 2, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
+    GlobalTouch:registerArea("leftTouch", 0, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
+    GlobalTouch:registerArea("rightTouch", love.graphics.getWidth() / 2, 0, love.graphics.getWidth() / 2, love.graphics.getHeight())
+    GlobalTouch:registerArea("tap", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+    GlobalTouch:registerArea("pauseTap", 32, 32, 64, 64)
 end
 
 function PlayState:enter()
@@ -60,14 +67,42 @@ function PlayState:draw()
         love.graphics.setColor(1, 1, 1, 1)
     end
 
+    if not registers.user.roundStarted then
+        if love.system.getOS() == "Windows" or love.system.getOS() == "Linux" or love.system.getOS() == "OS X" then
+            love.graphics.printf(languageService["game_press_dive"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        else
+            love.graphics.printf(languageService["game_touch_dive"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        end
+    end
+
+
+    if love.system.getOS == "Android" or love.system.getOS == "Android" then
+        love.graphics.draw(pauseButton, 32, 32, 0, 2, 2)
+    end
+
     GlobalTouch:display()
 end
 
 function PlayState:update(elapsed)
+    if not registers.user.roundStarted then
+        if GlobalTouch:isHit("tap") then
+            registers.user.roundStarted = true
+        end
+        return
+    end
+
+    if PlayState.currentLevel > 4 then
+        gamestate.switch()
+    end
+
+    if GlobalTouch:isHit("pauseTap") then
+        registers.user.paused = not registers.user.paused
+    end
+
     if registers.user.paused then
-
+        return
     elseif registers.user.levelEnded then
-
+        return
     else
         -- camera scroll --
         camScroll.scrollX = camScroll.scrollX - (camScroll.scrollX - world.templates.player.x) * camScroll.xMultiplier
@@ -109,6 +144,31 @@ function PlayState:keypressed(k)
             reset()
         end
     end
+
+    if registers.user.levelEnded then
+        if k == "space" then
+            PlayState.currentLevel = PlayState.currentLevel + 1
+            reset()
+        end
+    end
+
+    if not registers.user.roundStarted then
+        if k == "space" then
+            registers.user.roundStarted = true
+        end
+    end
+end
+
+function PlayState:touchpressed(id, x, y, dx, dy, pressure)
+    GlobalTouch:touchpressed(id, x, y, dx, dy, pressure)
+end
+
+function PlayState:touchmoved(id, x, y, dx, dy, pressure)
+    GlobalTouch:touchmoved(id, x, y, dx, dy, pressure)
+end
+
+function PlayState:touchreleased(id, x, y, dx, dy, pressure)
+    GlobalTouch:touchreleased(id, x, y, dx ,dy, pressure)
 end
 
 return PlayState

@@ -19,7 +19,7 @@ function MenuState:enter()
                 text = languageService["menu_buttons_new_game"],
                 locked = false,
                 onClick = function()
-                    print("new")
+                    gamestate.switch(PlayState)
                 end
             },
             {
@@ -40,7 +40,7 @@ function MenuState:enter()
                 text = languageService["menu_buttons_exit"],
                 locked = false,
                 onClick = function()
-                    print("new")
+                    love.event.quit()
                 end
             },
         }
@@ -56,13 +56,17 @@ function MenuState:enter()
             ),
             locked = element.locked,
             onClick = element.onClick,
-            touch = GlobalTouch:registerArea(
-                "touch" .. e,
-                viewElements.container.x, viewElements.container.y + e * 3 * viewElements.container.margins, 
-                viewElements.container.w, viewElements.container.h
-            )
+            id = "touch" .. e,
         })
+
+        GlobalTouch:registerArea(
+            "touch" .. e,
+            viewElements.container.x, viewElements.container.y + e * 3 * viewElements.container.margins, 
+            viewElements.container.w, viewElements.container.h
+        )
     end
+
+    print(debug.formattable(buttons))
 end
 
 function MenuState:draw()
@@ -81,7 +85,11 @@ function MenuState:draw()
 end
 
 function MenuState:update(elapsed)
-
+    for _, e in ipairs(buttons) do
+        if GlobalTouch:isHit(e.id) and not e.locked then
+            e.onClick()
+        end
+    end
 end
 
 function MenuState:mousepressed(x, y, button)

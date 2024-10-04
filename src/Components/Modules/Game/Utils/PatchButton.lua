@@ -33,12 +33,14 @@ function PatchButton:draw()
 
     -- text --
     love.graphics.printf(self.text, self.font, self.x , self.y + self.h / 2, self.w + 32, "center")
+
+    love.graphics.rectangle("line", self.x, self.y, self.w + 32, self.h + 32)
 end
 
 function PatchButton:hover(elapsed)
     local mx, my = love.mouse.getPosition()
 
-    if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w, h = self.h}) then
+    if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w + 32, h = self.h + 32}) then
         return true
     end
     return false
@@ -47,7 +49,7 @@ end
 function PatchButton:clicked()
     local mx, my = love.mouse.getPosition()
 
-    if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w, h = self.h}) then
+    if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w + 32, h = self.h + 32}) then
         if love.mouse.isDown(1) then
             return true
         end

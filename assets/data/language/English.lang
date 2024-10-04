@@ -6,5 +6,16 @@
             "menu_buttons_credits" : "Credits",
             "menu_buttons_exit" : "Exit"
         }
+    },
+    "demo" : {
+        "demo_end_text" : "Thank you for playing!\n\nExpect more updates and content on next versions :3",
+        "demo_continue" : "Press any key to continue",
+        "demo_continue_touch" : "Touch anywhere to continue"
+    },
+    "game" : {
+        "game_touch_dive" : "Touch to begin",
+        "game_press_dive" : "Press [SPACE] to begin",
+        "game_complete_level_touch" : "Touch to continue",
+        "game_complete_level" : "Press [SPACE] to continue"
     }
 }

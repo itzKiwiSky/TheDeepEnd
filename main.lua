@@ -57,7 +57,7 @@ function love.initialize(args)
         user = {
             roundStarted = false,
             paused = false,
-            levelEnded = false
+            levelEnded = false,
         },
         system = {
             showDebugHitbox = false,

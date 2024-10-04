@@ -2,7 +2,6 @@ love.filesystem.load("src/Components/Initialization/Run.lua")()
 love.filesystem.load("src/Components/Initialization/ErrorHandler.lua")()
 
 --AssetHandler = require("src.Components.Helpers.AssetManager")()
-
 VERSION = {
     ENGINE = "0.0.1",
     FORMATS = "0.0.1",
@@ -20,7 +19,7 @@ function love.initialize(args)
     LanguageController = require 'src.Components.Modules.System.LanguageManager'
     connectGJ = require 'src.Components.Modules.API.InitializeGJ'
 
-    GlobalTouch = multouch.new(3)
+    GlobalTouch = multouch.new(128)
 
     fontcache.init()
 

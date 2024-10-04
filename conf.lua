@@ -1,25 +1,7 @@
-local function getOS()
-    if jit then
-        if jit.os == "Windows" then
-            return "Windows"
-        elseif jit.os == "Linux" then
-            return "Linux"
-        elseif jit.os == "OSX" then
-            return "OSX"
-        elseif jit.os == "BSD" then
-            return "BSD"
-        elseif jit.os == "POSIX" then
-            return "POSIX"
-        end
-    else
-        return "Unknown"
-    end
-end
-
 function love.conf(w)
     --% Window %--
-    w.window.width          =       getOS() == "Android" and 1 or 640
-    w.window.height         =       getOS() == "Android" and 2 or 800
+    w.window.width          =       love._os == "Android" and 1 or 640
+    w.window.height         =       love._os == "Android" and 2 or 800
     w.window.icon           =       "icon.png"
     w.window.title          =       "The lost deep"
     w.window.x              =       nil
@@ -35,7 +17,7 @@ function love.conf(w)
 
     --% Storage %--
     w.externalstorage       =       true
-    w.identity              =       "com.kiwiworlddomination.thedeepend"
+    w.identity              =       "com.kiwistationstudios.thedeepend"
 
     --% Modules %--
     w.modules.audio         =       true

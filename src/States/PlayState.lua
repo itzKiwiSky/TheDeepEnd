@@ -92,7 +92,7 @@ function PlayState:update(elapsed)
     end
 
     if PlayState.currentLevel > 4 then
-        gamestate.switch()
+        gamestate.switch(EndDemoState)
     end
 
     if GlobalTouch:isHit("pauseTap") then

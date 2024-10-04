@@ -63,8 +63,6 @@ function MenuState:enter()
             )
         })
     end
-
-    print(debug.formattable(buttons))
 end
 
 function MenuState:draw()

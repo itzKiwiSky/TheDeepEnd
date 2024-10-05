@@ -8,7 +8,7 @@ local function reset()
     camScroll.x = world.templates.player.x
     camScroll.y = world.templates.player.y
 
-    world.templates.player.HP = world.templates.player.maxHP
+    --world.templates.player.HP = world.templates.player.maxHP
     world.templates.player:init(world.spawnX, world.spawnY)
 end
 
@@ -91,10 +91,6 @@ function PlayState:update(elapsed)
         return
     end
 
-    if PlayState.currentLevel > 4 then
-        gamestate.switch(EndDemoState)
-    end
-
     if GlobalTouch:isHit("pauseTap") then
         registers.user.paused = not registers.user.paused
     end
@@ -147,8 +143,14 @@ function PlayState:keypressed(k)
 
     if registers.user.levelEnded then
         if k == "space" then
-            PlayState.currentLevel = PlayState.currentLevel + 1
-            reset()
+            if PlayState.currentLevel < 4 then
+                registers.user.roundStarted = false
+                registers.user.levelEnded = false
+                PlayState.currentLevel = PlayState.currentLevel + 1
+                reset()
+            else
+                gamestate.switch(EndDemoState)
+            end
         end
     end
 

@@ -34,7 +34,7 @@ function PatchButton:draw()
     -- text --
     love.graphics.printf(self.text, self.font, self.x , self.y + self.h / 2, self.w + 32, "center")
 
-    love.graphics.rectangle("line", self.x, self.y, self.w + 32, self.h + 32)
+    --love.graphics.rectangle("line", self.x, self.y, self.w + 32, self.h + 32)
 end
 
 function PatchButton:hover(elapsed)

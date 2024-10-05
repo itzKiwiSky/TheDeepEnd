@@ -26,18 +26,12 @@ function love.initialize(args)
     lollipop.currentSave.game = {
         user = {
             settings = {
-                audio = {
-                    master = 75,
-                    music = 75,
-                    sfx = 50,
+                shaders = true,
+                language = "English",
+                gamejolt = {
+                    username = "",
+                    usertoken = ""
                 },
-                misc = {
-                    language = "English",
-                    gamejolt = {
-                        username = "",
-                        usertoken = ""
-                    },
-                }
             },
             game = {
                 totalPoints = 0,
@@ -46,12 +40,11 @@ function love.initialize(args)
         }
     }
 
-    lollipop.initializeSlot("game")
+    lollipop.initializeSlot("dive")
 
     love.graphics.setDefaultFilter("nearest", "nearest")
 
-    love.audio.setVolume(0.01 * lollipop.currentSave.game.user.settings.audio.master)
-    languageService = LanguageController(lollipop.currentSave.game.user.settings.misc.language)
+    languageService = LanguageController(lollipop.currentSave.game.user.settings.language)
 
     registers = {
         user = {
@@ -62,6 +55,7 @@ function love.initialize(args)
         system = {
             showDebugHitbox = false,
             freemove = false,
+            gameTime = 0,
         }
     }
 
@@ -93,17 +87,19 @@ function love.initialize(args)
 
     love.filesystem.createDirectory("editor")
     love.filesystem.createDirectory("editor/levels")
+    love.filesystem.createDirectory("screenshots")
 
     gamestate.registerEvents()
-    gamestate.switch(MenuState)
+    gamestate.switch(SplashState)
 end
 
 function love.update(elapsed)
     if gamejolt.isLoggedIn then
-        registers.system.gameTime = registers.system.gameTime * elapsed
+        registers.system.gameTime = registers.system.gameTime + elapsed
         if math.floor(registers.system.gameTime) >= 20 then
             gamejolt.pingSession(true)
             registers.system.gameTime = 0
+            io.printf(string.format("{bgGreen}{brightWhite}{bold}[Gamejolt]{reset}{brightWhite} : Client heartbeated a session (%s, %s){reset}\n", gamejolt.username, gamejolt.userToken))
         end
     end
 end
@@ -115,6 +111,9 @@ function love.keypressed(k)
         end
         if k == "f5" then
             registers.system.freemove = not registers.system.freemove
+        end
+        if k == "f11" then
+            love.graphics.captureScreenshot("screenshots/screen_" .. os.date("%Y-%m-%d %H-%M-%S") .. ".png")
         end
     end
 end

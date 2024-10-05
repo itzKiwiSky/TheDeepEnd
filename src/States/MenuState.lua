@@ -7,10 +7,19 @@ function MenuState:enter()
     snd_ambientSound = love.audio.newSource("assets/sounds/ambient/underwater.ogg", "static")
     snd_themeOST = love.audio.newSource("assets/sounds/theme.ogg", "static")
 
-    fnt_logoGame = fontcache.getFont("phoenixbios", 40)
+    logoGame = love.graphics.newImage("assets/images/logogame.png")
+    logoDemo = love.graphics.newImage("assets/images/demoText.png")
+    logoGameY = 140
+    logoSpeed = 2.1
+    logoAmplitude = 1.2
+
+    effect = moonshine(moonshine.effects.vignette)
+    -- time sys -- 
+    time = 0
 
     buttons = {}
 
+    -- menu definitions --
     viewElements = {
         container = {
             x = love.graphics.getWidth() / 2 - 128,
@@ -73,8 +82,6 @@ function MenuState:enter()
         )
     end
 
-    --print(debug.formattable(buttons))
-
     -- sounds --
     snd_ambientSound:setLooping(true)
     snd_ambientSound:setVolume(0.3)
@@ -84,20 +91,23 @@ function MenuState:enter()
 end
 
 function MenuState:draw()
-    love.graphics.printf("The Deep End", fnt_logoGame,0, 200, love.graphics.getWidth(), "center")
+    effect(function()
+        love.graphics.draw(logoGame, love.graphics.getWidth() / 2, logoGameY, 0, 1.2, 1.2, logoGame:getWidth() / 2, logoGame:getHeight() / 2)
+        love.graphics.draw(logoDemo, logoGame:getWidth(), logoGameY - 64, 0, 0.8, 0.8, logoDemo:getWidth() / 2, logoDemo:getHeight() / 2)
 
-    for _, e in ipairs(buttons) do
-        if e.btn:hover() then
-            love.graphics.setColor(0.7, 0.7, 0.7, 1)
-        else
+        for _, e in ipairs(buttons) do
+            if e.btn:hover() then
+                love.graphics.setColor(0.7, 0.7, 0.7, 1)
+            else
+                love.graphics.setColor(1, 1, 1, 1)
+            end
+            if e.locked then
+                love.graphics.setColor(0.4, 0.4, 0.4, 1)
+            end
+            e.btn:draw()
             love.graphics.setColor(1, 1, 1, 1)
         end
-        if e.locked then
-            love.graphics.setColor(0.4, 0.4, 0.4, 1)
-        end
-        e.btn:draw()
-        love.graphics.setColor(1, 1, 1, 1)
-    end
+    end)
 end
 
 function MenuState:update(elapsed)
@@ -106,6 +116,8 @@ function MenuState:update(elapsed)
             e.onClick()
         end
     end
+    time = time + elapsed
+    logoGameY = logoGameY + math.sin(time * logoSpeed) * logoAmplitude
 end
 
 function MenuState:mousepressed(x, y, button)

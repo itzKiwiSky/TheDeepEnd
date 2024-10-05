@@ -1,6 +1,6 @@
 PlayState = {}
 
-PlayState.currentLevel = 0
+PlayState.currentLevel = 4
 
 local function reset()
     world:init()

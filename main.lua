@@ -90,7 +90,7 @@ function love.initialize(args)
     love.filesystem.createDirectory("screenshots")
 
     gamestate.registerEvents()
-    gamestate.switch(SplashState)
+    gamestate.switch(MenuState)
 end
 
 function love.update(elapsed)

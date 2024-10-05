@@ -30,7 +30,9 @@ local function _new(x, y, height, range)
         r = range
     }
 
-    for cy = self.y, self.y + self.h, 32 do
+    self.time = 0
+
+    for cy = self.y, (self.y + self.h) - 32, 32 do
         --table.insert(self.assets.chains, {})
         if cy <= self.y then
             table.insert(self.assets.chains, {
@@ -39,7 +41,7 @@ local function _new(x, y, height, range)
                 type = "chain_end_top",
                 canMove = true
             })
-        elseif cy >= self.y + self.h then
+        elseif cy >= (self.y + self.h) - 32 then
             table.insert(self.assets.chains, {
                 x = self.x,
                 y = cy,
@@ -78,10 +80,14 @@ function Bomb:update(elapsed)
 
     self.hitboxRange.x = self.x - self.hitboxRange.offsetX
     self.hitboxRange.y = self.y - self.hitboxRange.offsetY
+    --[[    
+    self.time = self.time + elapsed
 
     for _, c in ipairs(self.assets.chains) do
-        c.x = math.cos(elapsed)
+        --c.x = math.sin(elapsed)
+        c.x = (c.x + math.sin(self.time * 1.2) * _ % 2 == 0 and 0.10 or 0.13)
     end
+    ]]--
 end
 
 return setmetatable(Bomb, { __call = function(_, ...) return _new(...) end })

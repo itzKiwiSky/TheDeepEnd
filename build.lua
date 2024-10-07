@@ -13,7 +13,9 @@ return {
         "icon_old.png", 
         "docs", 
         ".VSCodeCounter", 
-        "project"},
+        "project",
+        "gjassets"
+    },
     icon = "icon.png",
     
     identifier = "com.kiwistationstudios.thedeepend", 

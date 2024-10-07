@@ -106,6 +106,23 @@ function Player:update(elapsed)
             self.y = self.y + self.gravity * elapsed
             if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
                 -- touch shit --
+                if GlobalTouch:isHit("leftTouch") and GlobalTouch:isHit("rightTouch") then
+                    self.gravity = 70
+                    self.partcles.bubbles:start()
+                elseif GlobalTouch:isHit("leftTouch") then
+                    self.x = self.x - self.moveSpeed * elapsed
+                    self.mirrored = true
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                elseif GlobalTouch:isHit("rightTouch") then
+                    self.x = self.x + self.moveSpeed * elapsed
+                    self.mirrored = false
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                else
+                    self.gravity = 30
+                    self.partcles.bubbles:stop()
+                end
             else
                 if love.keyboard.isDown("left", "a") then
                     self.x = self.x - self.moveSpeed * elapsed

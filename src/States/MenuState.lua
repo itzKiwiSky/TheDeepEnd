@@ -65,7 +65,7 @@ function MenuState:enter()
                 text = languageService["menu_buttons_exit"],
                 locked = false,
                 onClick = function()
-                    gamestate.switch(TutorialState)
+                    love.event.quit()
                 end
             },
         }

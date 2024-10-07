@@ -1,0 +1,29 @@
+{ "frames": [
+   {
+    "filename": "gauntlet_default_0",
+    "frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   },
+   {
+    "filename": "gauntlet_default_1",
+    "frame": { "x": 64, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.9.1-x64",
+  "image": "pointer.png",
+  "format": "I8",
+  "size": { "w": 128, "h": 64 },
+  "scale": "1"
+ }
+}

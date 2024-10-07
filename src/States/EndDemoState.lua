@@ -2,6 +2,8 @@ EndDemoState = {}
 
 function EndDemoState:enter()
     fnt_demoEnd = fontcache.getFont("phoenixbios", 28)
+
+    GlobalTouch:registerArea("demotap", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 end
 
 function EndDemoState:draw()
@@ -14,7 +16,15 @@ function EndDemoState:draw()
 end
 
 function EndDemoState:update(elapsed)
+    if love.system.getOS() == "Android" or love.system.getOS() == "iOS" then
+        if GlobalTouch:isHit("demotap") then
+            gamestate.switch(MenuState)
+        end
+    end
+end
 
+function EndDemoState:keypressed(k)
+    gamestate.switch(MenuState)
 end
 
 return EndDemoState

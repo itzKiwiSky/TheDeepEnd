@@ -19,6 +19,15 @@ end
 
 function Fish:update(elapsed)
     self.bubbles:update(elapsed)
+
+    switch(self.direction, {
+        ["left"] = function()
+            self.x = self.x - self.speed * elapsed
+        end,
+        ["right"] = function()
+            self.x = self.x + self.speed * elapsed
+        end
+    })
 end
 
 return setmetatable(Fish, { __call = function(_, ...) return _new(...) end })

@@ -2,10 +2,14 @@ MenuState = {}
 
 function MenuState:enter()
     buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
-    btn = buttonPatch("assets/images/patchButton", "sexo", 90, 90, 128, 64)
 
     snd_ambientSound = love.audio.newSource("assets/sounds/ambient/underwater.ogg", "static")
     snd_themeOST = love.audio.newSource("assets/sounds/theme.ogg", "static")
+
+    bg_gradient = love.graphics.newGradient("vertical", {40, 40, 40, 255}, {0, 0, 0, 255})
+    bg_fish = require 'src.Components.Modules.Game.MenuObjects.Fish'
+
+    bgobjects = {}
 
     mountainsBG = love.graphics.newImage("assets/images/mountains.png")
     BGParticles = require 'src.Components.Modules.Game.Particles.BGParticles'
@@ -17,6 +21,8 @@ function MenuState:enter()
     logoAmplitude = 1.2
 
     effect = moonshine(moonshine.effects.vignette)
+    effect.vignette.radius = 1.4
+
     -- time sys -- 
     time = 0
 
@@ -59,7 +65,7 @@ function MenuState:enter()
                 text = languageService["menu_buttons_exit"],
                 locked = false,
                 onClick = function()
-                    love.event.quit()
+                    gamestate.switch(TutorialState)
                 end
             },
         }
@@ -130,6 +136,10 @@ function MenuState:enter()
         end
     end
 
+    for f = 1, math.random(5, 15), 1 do
+        table.insert(bgobjects, bg_fish(math.random(100, 500), math.random(200, 600), math.random(1, 2) == 1 and "left" or "right"))
+    end
+
     -- sounds --
     snd_ambientSound:setLooping(true)
     snd_ambientSound:setVolume(0.3)
@@ -140,7 +150,11 @@ end
 
 function MenuState:draw()
     effect(function()
-        --love.graphics.draw(mountainsBG, 0, love.graphics.getHeight() - mountainsBGP:getHeight())
+        love.graphics.draw(bg_gradient, 0, 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        for _, o in pairs(bgobjects) do
+            o:draw()
+        end
+
         love.graphics.draw(BGParticles, 340, love.graphics.getHeight())
         for _, l in ipairs(bg) do
             for _, m in ipairs(l.items) do
@@ -179,6 +193,19 @@ function MenuState:update(elapsed)
 
     -- bg move -- 
     BGParticles:update(elapsed)
+
+    for _, o in pairs(bgobjects) do
+        o:update(elapsed)
+
+        if o.x <= -128 then
+            table.remove(bgobjects, _)
+            table.insert(bgobjects, bg_fish(-96, math.random(200, 600), "right"))
+        end
+        if o.x >= love.graphics.getWidth() + 128 then
+            table.remove(bgobjects, _)
+            table.insert(bgobjects, bg_fish(love.graphics.getWidth() + 128, math.random(200, 600), "left"))
+        end
+    end
 
     for _, l in ipairs(bg) do
         for _, m in ipairs(l.items) do

@@ -20,9 +20,9 @@ return {
     
     identifier = "com.kiwistationstudios.thedeepend", 
     libs = { 
-        windows = {"assets/bin/https.dll"},
-        linux = {"assets/bin/https_linux.so"},
-        macos = {"assets/bin/https_mac.so"},
+        windows = {"assets/bin/win/https.dll"},
+        linux = {"assets/bin/macos/https.so"},
+        macos = {"assets/bin/linux/https.so"},
         all = {"LICENSE", "ApiStuff.json"}
     },
     platforms = {"windows", "linux", "macos"} 

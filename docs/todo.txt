@@ -1,8 +1,13 @@
-To-do list
+todo
 
-[DEMO 0.0.1]
+[X] aumentar a velocidade do player X
+[.] colisao com blocos
+[.] tutorial simples
+[X] adicionar tela de final de fase
+[X] arrumar init instantaneo ao passar de fase
+[-] musica de background
+[.] Tela de morte
+[.] finalizar script de criação de changelog
 
-[X] 5 levels
-[X] basic gameplay loop
-[X] translation support
-[X] basic GamejoltAPI integration
+adicionar pagina do manin no bglh do game
+https://gamejolt.com/@Yoshoo

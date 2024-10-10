@@ -16,6 +16,8 @@
         "game_touch_dive" : "Touch to begin",
         "game_press_dive" : "Press [SPACE] to begin",
         "game_complete_level_touch" : "Touch to continue",
-        "game_complete_level" : "Press [SPACE] to continue"
+        "game_complete_level" : "Press [SPACE] to continue",
+        "game_player_dead_touch" : "You are dead!\n\nTouch to restart",
+        "game_player_dead" : "You are dead!\n\nPress [SPACE] to restart"
     }
 }

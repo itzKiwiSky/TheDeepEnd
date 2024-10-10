@@ -11,7 +11,7 @@ function Player:init(x, y)
     self.x = x or love.graphics.getWidth() / 2
     self.y = y or 75
     self.gravity = 30
-    self.moveSpeed = 30
+    self.moveSpeed = 40
     self.HP = 3
     self.maxHP = 3
     self.harpoon = false

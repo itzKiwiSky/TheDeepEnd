@@ -1,10 +1,20 @@
 PlayState = {}
 
-PlayState.currentLevel = 1
+PlayState.currentLevel = 0
 
 local function reset()
-    world:init()
+    -- reset camera --
+    viewcam.x = love.graphics.getWidth() / 2
+    viewcam.y = love.graphics.getHeight() / 2
+    camScroll.x = viewcam.x
+    camScroll.y = viewcam.y
+    camScroll.scrollX = love.graphics.getWidth() / 2
+    camScroll.scrollY = love.graphics.getHeight() / 2
+
+    -- build world --
     world:build("assets/data/levels/level0_" .. PlayState.currentLevel .. ".lua")
+
+    -- set camera to player --
     camScroll.x = world.templates.player.x
     camScroll.y = world.templates.player.y
 
@@ -19,7 +29,12 @@ function PlayState:init()
     harpoonHud = love.graphics.newImage("assets/images/harpoon.png")
     pauseButton = love.graphics.newImage("assets/images/pauseButton.png")
 
+    world:init()
+
     fnt_gameFont = fontcache.getFont("phoenixbios", 30)
+
+    effect = moonshine(moonshine.effects.vignette)
+    effect.vignette.radius = 0.8
 
     viewcam = camera()
 
@@ -44,10 +59,12 @@ function PlayState:enter()
 end
 
 function PlayState:draw()
-    viewcam:attach()
-        world:draw()
-    viewcam:detach()
-
+    effect(function()
+        viewcam:attach()
+            world:draw()
+        viewcam:detach()
+    end)
+    
     -- Hud Thing --
     for h = 1, world.templates.player.maxHP, 1 do
         if h <= world.templates.player.HP then
@@ -75,12 +92,28 @@ function PlayState:draw()
         end
     end
 
+    if registers.user.levelEnded then
+        if love.system.getOS() == "Windows" or love.system.getOS() == "Linux" or love.system.getOS() == "OS X" then
+            love.graphics.printf(languageService["game_complete_level"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        else
+            love.graphics.printf(languageService["game_complete_level_touch"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        end
+    end
 
-    if love.system.getOS == "Android" or love.system.getOS == "Android" then
+    if world.templates.player.HP <= 0 then
+        if love.system.getOS() == "Windows" or love.system.getOS() == "Linux" or love.system.getOS() == "OS X" then
+            love.graphics.printf(languageService["game_player_dead"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        else
+            love.graphics.printf(languageService["game_player_dead_touch"], fnt_gameFont, 0, love.graphics.getHeight() / 2 - 128, love.graphics.getWidth(), "center")
+        end
+    end
+
+
+    if love.system.getOS == "Android" or love.system.getOS == "iOS" then
         love.graphics.draw(pauseButton, 32, 32, 0, 2, 2)
     end
 
-    GlobalTouch:display()
+    --GlobalTouch:display()
 end
 
 function PlayState:update(elapsed)
@@ -134,18 +167,12 @@ function PlayState:keypressed(k)
     if k == "escape" then
         registers.user.paused = not registers.user.paused
     end
-
-    if world.templates.player.HP <= 0 then
-        if k == "space" then
-            reset()
-        end
-    end
-
+    --[[
     if registers.user.levelEnded then
         if k == "space" then
             if PlayState.currentLevel < 4 then
-                registers.user.roundStarted = false
                 registers.user.levelEnded = false
+                registers.user.roundStarted = false
                 PlayState.currentLevel = PlayState.currentLevel + 1
                 reset()
             else
@@ -153,10 +180,22 @@ function PlayState:keypressed(k)
             end
         end
     end
-
-    if not registers.user.roundStarted then
-        if k == "space" then
+    ]]--
+    if k == "space" then
+        if registers.user.levelEnded then
+            if PlayState.currentLevel < 4 then
+                registers.user.levelEnded = false
+                registers.user.roundStarted = false
+                PlayState.currentLevel = PlayState.currentLevel + 1
+                reset()
+            else
+                gamestate.switch(EndDemoState)
+            end
+        elseif not registers.user.roundStarted then
             registers.user.roundStarted = true
+        elseif world.templates.player.HP <= 0 then
+            registers.user.roundStarted = false
+            reset()
         end
     end
 end

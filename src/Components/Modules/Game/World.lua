@@ -154,7 +154,16 @@ end
 
 function World:update(elapsed)
     self.assets.endParticles:update(elapsed)
-    self.templates.player:update(elapsed)
+    if self.templates.player.HP > 0 then
+        self.templates.player:update(elapsed)
+    end
+
+    for _, t in pairs(self.tilesObj) do
+        if collision.rectRect(self.templates.player.hitbox, t.hitbox) then
+            self.templates.player.HP = 0
+        end
+    end
+
     for _, o in pairs(self.objects) do
         if o.update then
             o:update(elapsed)

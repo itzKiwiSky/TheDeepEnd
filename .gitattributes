@@ -1,4 +1,3 @@
-# Auto detect text files and perform LF normalization
 *.lang linguist-language=JSON
 *.lua linguist-language=Lua
 *.md linguist-language=Markdown

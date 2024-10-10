@@ -1,13 +1,12 @@
 todo
 
-[X] aumentar a velocidade do player X
-[.] colisao com blocos
-[.] tutorial simples
-[X] adicionar tela de final de fase
-[X] arrumar init instantaneo ao passar de fase
-[-] musica de background
-[.] Tela de morte
-[.] finalizar script de criação de changelog
-
-adicionar pagina do manin no bglh do game
-https://gamejolt.com/@Yoshoo
+[0.0.1 - DEMO]
+    [X] aumentar a velocidade do player X
+    [X] colisao com blocos
+    [.] tutorial simples
+    [X] adicionar tela de final de fase
+    [X] arrumar init instantaneo ao passar de fase
+    [-] musica de background
+    [X] Tela de morte
+    [.] finalizar script de criação de changelog
+    [.] adicionar pagina do manin no bglh do game https://gamejolt.com/@Yoshoo

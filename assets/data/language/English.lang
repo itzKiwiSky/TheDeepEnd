@@ -4,7 +4,7 @@
             "menu_buttons_new_game" : "New game",
             "menu_buttons_continue" : "Continue",
             "menu_buttons_credits" : "Credits",
-            "menu_buttons_tutorial" : "Exit"
+            "menu_buttons_exit" : "Exit"
         }
     },
     "demo" : {

@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level0_2.tmx",
+    "activeFile": "tmx/level0_4.tmx",
     "expandedProjectPaths": [
-        "templates",
-        ".",
         "tmx",
-        "worlds",
-        "tsx"
+        "tsx",
+        ".",
+        "templates",
+        "worlds"
     ],
     "fileStates": {
         "": {
@@ -27,46 +27,46 @@
             "scaleInDock": 1
         },
         "tmx/level0_0.tmx": {
-            "scale": 0.75,
+            "scale": 0.12,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 361.3333333333333,
-                "y": 709.3333333333333
+                "x": 600,
+                "y": 3750
             }
         },
         "tmx/level0_1.tmx": {
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 405.3333333333333,
-                "y": 1108
+                "x": 405.33333333333337,
+                "y": 1108.6666666666665
             }
         },
         "tmx/level0_2.tmx": {
-            "scale": 0.75,
+            "scale": 0.12,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 486.66666666666663,
-                "y": 1731.9999999999998
+                "x": 600,
+                "y": 1925.0000000000005
             }
         },
         "tmx/level0_3.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 0.12,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 350.66666666666663,
-                "y": 1517.3333333333333
+                "x": 600,
+                "y": 325
             }
         },
         "tmx/level0_4.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.5,
-            "selectedLayer": 0,
+            "scale": 0.12,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 259.3333333333333,
-                "y": 511.99999999999994
+                "x": 600,
+                "y": -700
             }
         },
         "tmx/level1.tmx": {
@@ -117,8 +117,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 2644,
-                "y": -46
+                "x": 3080,
+                "y": -38
             }
         },
         "tmx/level_debug.tmx#blocks_tileset": {
@@ -165,8 +165,8 @@
         "tmx/level0_0.tmx",
         "tmx/level0_3.tmx",
         "tmx/level0_1.tmx",
-        "tmx/level0_4.tmx",
         "tmx/level0_2.tmx",
+        "tmx/level0_4.tmx",
         "tmx/level1.tmx",
         "tmx/level2.tmx",
         "tmx/level3.tmx",

@@ -1,7 +1,7 @@
 return {
     name = "The Deep End",
     developer = "KiwiStationStudios",
-    output = "export",
+    output = "./export",
     version = "0.0.1",
     love = "11.5",
     ignore = {
@@ -20,10 +20,19 @@ return {
     
     identifier = "com.kiwistationstudios.thedeepend", 
     libs = { 
-        windows = {"assets/bin/win/https.dll"},
-        linux = {"assets/bin/macos/https.so"},
-        macos = {"assets/bin/linux/https.so"},
-        all = {"LICENSE", "ApiStuff.json"}
+        windows = {
+            "assets/bin/win/https.dll",
+            "assets/bin/win/discord-rpc.dll"
+        },
+        linux = {
+            "assets/bin/macos/https.so",
+            "assets/bin/macos/discord-rpc.dylib"
+        },
+        macos = {
+            "assets/bin/linux/https.so",
+            "assets/bin/linux/discord-rpc.so"
+        },
+        all = {"LICENSE", "changelog.txt"}
     },
     platforms = {"windows", "linux", "macos"} 
 }

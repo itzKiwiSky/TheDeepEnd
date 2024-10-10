@@ -1,8 +1,9 @@
 local VersionModule = {}
 
-function VersionModule.check()
+function VersionModule.check(url)
+    assert(type(url) == "string", "[ERROR] : Invalid parameter type, expected 'string', got: " .. type(url))
     io.printf("{bgBrightWhite}{brightBlack}[SYSTEM]{reset} : Checking for updates...\n")
-    local code, serverVersion = https.request("https://raw.githubusercontent.com/Doge2Dev/OpenNeonix/master/.appversion")
+    local code, serverVersion = https.request(url)
     if code == 200 then
         if serverVersion ~= VERSION.ENGINE then
             io.printf("{bgBrightWhite}{brightBlack}[SYSTEM]{reset} : Need update game\n")

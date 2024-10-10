@@ -1,0 +1,8 @@
+To-do list
+
+[DEMO 0.0.1]
+
+[X] 5 levels
+[X] basic gameplay loop
+[X] translation support
+[X] basic GamejoltAPI integration

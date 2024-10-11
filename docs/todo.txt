@@ -8,6 +8,7 @@ todo
     [X] arrumar init instantaneo ao passar de fase
     [*] musica de background
     [X] Tela de morte
+    [.] tela de creditos
 
 
 atribuições

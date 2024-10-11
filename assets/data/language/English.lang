@@ -5,6 +5,9 @@
             "menu_buttons_continue" : "Continue",
             "menu_buttons_credits" : "Credits",
             "menu_buttons_exit" : "Exit"
+        },
+        "credits" : {
+            "credits_buttons_back" : "Back"
         }
     },
     "demo" : {

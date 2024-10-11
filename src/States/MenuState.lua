@@ -1,10 +1,12 @@
 MenuState = {}
 
-function MenuState:enter()
-    buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
-
+function MenuState:init()
     snd_ambientSound = love.audio.newSource("assets/sounds/ambient/underwater.ogg", "static")
     snd_themeOST = love.audio.newSource("assets/sounds/theme.ogg", "static")
+end
+
+function MenuState:enter()
+    buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
 
     bg_gradient = love.graphics.newGradient("vertical", {40, 40, 40, 255}, {0, 0, 0, 255})
     bg_fish = require 'src.Components.Modules.Game.MenuObjects.Fish'
@@ -58,7 +60,9 @@ function MenuState:enter()
                 text = languageService["menu_buttons_credits"],
                 locked = false,
                 onClick = function()
-                    print("cont")
+                    snd_themeOST:stop()
+                    snd_ambientSound:seek(0)
+                    gamestate.switch(CreditsState)
                 end
             },
             {

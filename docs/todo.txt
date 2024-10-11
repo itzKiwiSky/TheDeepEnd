@@ -6,7 +6,12 @@ todo
     [.] tutorial simples
     [X] adicionar tela de final de fase
     [X] arrumar init instantaneo ao passar de fase
-    [-] musica de background
+    [*] musica de background
     [X] Tela de morte
-    [.] finalizar script de criação de changelog
-    [.] adicionar pagina do manin no bglh do game https://gamejolt.com/@Yoshoo
+
+
+atribuições
+    https://gamejolt.com/@Yoshoo
+    https://adamatomic.itch.io/mc-caves
+    https://ninjikin.itch.io/starter-tiles
+    https://piiixl.itch.io/1-bit-patterns-and-tiles

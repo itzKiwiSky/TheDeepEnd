@@ -141,7 +141,7 @@ function MenuState:enter()
     end
 
     -- sounds --
-    if not snd_ambientSound:isPLaying() then
+    if not snd_ambientSound:isPlaying() then
         snd_ambientSound:setLooping(true)
         snd_ambientSound:setVolume(0.3)
         snd_ambientSound:play()

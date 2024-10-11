@@ -13,7 +13,7 @@ function love.conf(w)
     --w.window.vsync          =       0
 
     --% Debug %--
-    w.console               =       love.filesystem.isFused() and false or true
+    w.console               =       not love.filesystem.isFused()
 
     --% Storage %--
     w.externalstorage       =       true

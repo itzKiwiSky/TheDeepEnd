@@ -12,6 +12,8 @@ VERSION = {
 }
 
 function love.initialize(args)
+    --print(debug.formattable(love))
+
     fontcache = require 'src.Components.Modules.System.FontCache'
     versionChecker = require 'src.Components.Modules.API.CheckVersion'
     Presence = require 'src.Components.Modules.API.Presence'

@@ -3,12 +3,11 @@ todo
 [0.0.1 - DEMO]
     [X] aumentar a velocidade do player X
     [X] colisao com blocos
-    [.] tutorial simples
     [X] adicionar tela de final de fase
     [X] arrumar init instantaneo ao passar de fase
     [*] musica de background
     [X] Tela de morte
-    [.] tela de creditos
+    [X] tela de creditos
 
 
 atribuições

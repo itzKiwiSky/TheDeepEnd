@@ -12,9 +12,11 @@ return {
         ".commitid", 
         "icon_old.png", 
         "docs", 
-        ".VSCodeCounter", 
+        ".VSCodeCounter",
         "project",
-        "gjassets"
+        "gjassets",
+        "README.md",
+        "icon.png"
     },
     icon = "icon.png",
     
@@ -24,13 +26,13 @@ return {
             "assets/bin/win/https.dll",
             "assets/bin/win/discord-rpc.dll"
         },
-        linux = {
-            "assets/bin/macos/https.so",
-            "assets/bin/macos/discord-rpc.dylib"
-        },
         macos = {
+            "assets/bin/macos/https.so",
+            "assets/bin/macos/libdiscord-rpc.dylib"
+        },
+        linux = {
             "assets/bin/linux/https.so",
-            "assets/bin/linux/discord-rpc.so"
+            "assets/bin/linux/libdiscord-rpc.so"
         },
         all = {"LICENSE"}
     },

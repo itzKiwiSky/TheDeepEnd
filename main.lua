@@ -1,25 +1,19 @@
 love.filesystem.load("src/Components/Initialization/Run.lua")()
 love.filesystem.load("src/Components/Initialization/ErrorHandler.lua")()
 
+buildValues = require 'build'
+
 --AssetHandler = require("src.Components.Helpers.AssetManager")()
-VERSION = {
-    ENGINE = "0.0.1",
-    FORMATS = "0.0.1",
-    meta = {
-        commitID = "",
-        branch = "",
-    }
-}
 
 function love.initialize(args)
-    --print(debug.formattable(love))
-
+    local gitStuff = require 'src.Components.Initialization.GitStuff'
     fontcache = require 'src.Components.Modules.System.FontCache'
-    versionChecker = require 'src.Components.Modules.API.CheckVersion'
+    --versionChecker = require 'src.Components.Modules.API.CheckVersion'
     Presence = require 'src.Components.Modules.API.Presence'
     GameColors = require 'src.Components.Modules.Utils.GameColors'
     LanguageController = require 'src.Components.Modules.System.LanguageManager'
     connectGJ = require 'src.Components.Modules.API.InitializeGJ'
+    connectRPC = require 'src.Components.Modules.API.InitializeDiscord'
 
     GlobalTouch = multouch.new(128)
 
@@ -61,8 +55,13 @@ function love.initialize(args)
         }
     }
 
-    local gitStuff = require 'src.Components.Initialization.GitStuff'
     connectGJ()
+    connectRPC()
+
+    Presence.largeImageKey = "game_rpc"
+    Presence.largeImageText = "Loading..."
+    Presence.update()
+
 
     if not love.filesystem.isFused() then
         gitStuff.getAll()
@@ -82,11 +81,6 @@ function love.initialize(args)
         joysticks = love.joystick.getJoysticks()
     end
 
-    local substates = love.filesystem.getDirectoryItems("src/SubStates")
-    for s = 1, #substates, 1 do
-        require("src.SubStates." .. substates[s]:gsub(".lua", ""))
-    end
-
     love.filesystem.createDirectory("editor")
     love.filesystem.createDirectory("editor/levels")
     love.filesystem.createDirectory("screenshots")
@@ -96,6 +90,7 @@ function love.initialize(args)
 end
 
 function love.update(elapsed)
+    discordrpc.runCallbacks()
     if gamejolt.isLoggedIn then
         registers.system.gameTime = registers.system.gameTime + elapsed
         if math.floor(registers.system.gameTime) >= 20 then
@@ -124,4 +119,17 @@ function love.quit()
     if gamejolt.isLoggedIn then
         gamejolt.closeSession()
     end
+    discordrpc.shutdown()
+end
+
+function discordrpc.ready(userId, username, discriminator, avatar)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client connected (%s, %s, %s){reset}\n", userId, username, discriminator))
+end
+
+function discordrpc.disconnected(errorCode, message)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{brightBlue} : Client disconnected (%d, %s){reset}\n", errorCode, message))
+end
+
+function discordrpc.errored(errorCode, message)
+    io.printf(string.format("{bgBlue}{brightBlue}{bold}[Discord]{reset}{bgRed}{brightWhite}[Error]{reset}{brightWhite} : (%d, %s){reset}\n", errorCode, message))
 end

@@ -2,7 +2,7 @@ return {
     name = "The Deep End",
     developer = "KiwiStationStudios",
     output = "./export",
-    version = "0.0.1",
+    version = "0.0.2",
     love = "11.5",
     ignore = {
         "export", 

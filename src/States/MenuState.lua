@@ -8,7 +8,10 @@ end
 function MenuState:enter()
     buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
 
+    menuCam = camera()
+
     bg_gradient = love.graphics.newGradient("vertical", {40, 40, 40, 255}, {0, 0, 0, 255})
+    bg_transparentGradient = love.graphics.newGradient("vertical", {255, 255, 255, 0}, {255, 255, 255, 255})
     bg_fish = require 'src.Components.Modules.Game.MenuObjects.Fish'
 
     bgobjects = {}
@@ -25,8 +28,17 @@ function MenuState:enter()
     effect = moonshine(moonshine.effects.vignette)
     effect.vignette.radius = 1.4
 
+    Presence.largeImageKey = "game_rpc"
+    Presence.largeImageText = "Loading..."
+    Presence.state = "Checking menus"
+    Presence.details = "Looking in the menus"
+    Presence.update()
+
+    fnt_menuVersion = fontcache.getFont("phoenixbios", 18)
+
     -- time sys -- 
     time = 0
+    transitionOut = false
 
     buttons = {}
 
@@ -41,16 +53,23 @@ function MenuState:enter()
         },
         elements = {
             {
-                text = languageService["menu_buttons_new_game"],
+                text = languageService["menu_buttons_play"],
                 locked = false,
                 onClick = function()
-                    snd_themeOST:stop()
-                    snd_ambientSound:seek(0)
-                    gamestate.switch(PlayState)
+                    if not transitionOut then
+                        camTween = flux.to(menuCam, 5, {y = love.graphics.getHeight()})
+                        camTween:ease("backin")
+                        camTween:oncomplete(function()
+                            snd_themeOST:stop()
+                            snd_ambientSound:seek(0)
+                            gamestate.switch(MissionSelectionState)
+                        end)
+                        transitionOut = true
+                    end
                 end
             },
             {
-                text = languageService["menu_buttons_continue"],
+                text = languageService["menu_buttons_options"],
                 locked = true,
                 onClick = function()
                     print("cont")
@@ -152,40 +171,55 @@ function MenuState:enter()
     end
     snd_themeOST:setLooping(true)
     snd_themeOST:play()
+
+
 end
 
 function MenuState:draw()
-    effect(function()
-        love.graphics.draw(bg_gradient, 0, 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
-        for _, o in pairs(bgobjects) do
-            o:draw()
-        end
+    menuCam:attach()
+        effect(function()
+            love.graphics.draw(bg_gradient, 0, 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+            for _, o in pairs(bgobjects) do
+                o:draw()
+            end
 
-        love.graphics.draw(BGParticles, 340, love.graphics.getHeight())
-        for _, l in ipairs(bg) do
-            for _, m in ipairs(l.items) do
-                love.graphics.setColor(l.colorLevel, l.colorLevel, l.colorLevel)
-                love.graphics.draw(m.drawable, m.x + l.speed, m.y)
+            love.graphics.draw(BGParticles, 340, love.graphics.getHeight())
+            for _, l in ipairs(bg) do
+                for _, m in ipairs(l.items) do
+                    love.graphics.setColor(l.colorLevel, l.colorLevel, l.colorLevel)
+                    love.graphics.draw(m.drawable, m.x + l.speed, m.y)
+                    love.graphics.setColor(1, 1, 1, 1)
+                end
+            end
+
+            love.graphics.draw(logoGame, love.graphics.getWidth() / 2, 20 + logoGameY, 0, 1.2, 1.2, logoGame:getWidth() / 2, logoGame:getHeight() / 2)
+            love.graphics.draw(logoDemo, logoGame:getWidth(), logoGameY - 30, 0, 0.8, 0.8, logoDemo:getWidth() / 2, logoDemo:getHeight() / 2)
+
+            for _, e in ipairs(buttons) do
+                if e.btn:hover() then
+                    love.graphics.setColor(0.7, 0.7, 0.7, 1)
+                else
+                    love.graphics.setColor(1, 1, 1, 1)
+                end
+                if e.locked then
+                    love.graphics.setColor(0.4, 0.4, 0.4, 1)
+                end
+                e.btn:draw()
                 love.graphics.setColor(1, 1, 1, 1)
             end
-        end
 
-        love.graphics.draw(logoGame, love.graphics.getWidth() / 2, 20 + logoGameY, 0, 1.2, 1.2, logoGame:getWidth() / 2, logoGame:getHeight() / 2)
-        love.graphics.draw(logoDemo, logoGame:getWidth(), logoGameY - 30, 0, 0.8, 0.8, logoDemo:getWidth() / 2, logoDemo:getHeight() / 2)
-
-        for _, e in ipairs(buttons) do
-            if e.btn:hover() then
-                love.graphics.setColor(0.7, 0.7, 0.7, 1)
-            else
-                love.graphics.setColor(1, 1, 1, 1)
-            end
-            if e.locked then
-                love.graphics.setColor(0.4, 0.4, 0.4, 1)
-            end
-            e.btn:draw()
+            love.graphics.setColor(0.6, 0.6, 0.6, 1)
+                love.graphics.print("version " .. buildValues.version, fnt_menuVersion, 10, love.graphics.getHeight() - fnt_menuVersion:getHeight())
             love.graphics.setColor(1, 1, 1, 1)
-        end
-    end)
+            love.graphics.setBlendMode("alpha")
+            love.graphics.setColor(0, 0, 0, 1)
+                love.graphics.draw(bg_transparentGradient, 0, love.graphics.getHeight() - 128, 0, love.graphics.getWidth(), 128)
+                love.graphics.draw(bg_transparentGradient, 0, 128, 0, love.graphics.getWidth(), -128)
+                love.graphics.rectangle("fill", 0, love.graphics.getHeight(), love.graphics.getWidth(), love.graphics.getHeight() * 2)
+                love.graphics.rectangle("fill", 0, -256, love.graphics.getWidth(), 256)
+            love.graphics.setColor(1, 1, 1, 1)
+        end)
+    menuCam:detach()
 end
 
 function MenuState:update(elapsed)
@@ -199,6 +233,11 @@ function MenuState:update(elapsed)
 
     -- bg move -- 
     BGParticles:update(elapsed)
+
+    -- tween --
+    if transitionOut then
+        flux.update(elapsed)
+    end
 
     for _, o in pairs(bgobjects) do
         o:update(elapsed)

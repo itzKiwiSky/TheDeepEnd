@@ -1,6 +1,6 @@
 PlayState = {}
 
-PlayState.currentLevel = 0
+PlayState.currentLevel = 1
 
 local function reset()
     -- reset camera --

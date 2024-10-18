@@ -86,7 +86,7 @@ function love.initialize(args)
     love.filesystem.createDirectory("screenshots")
 
     gamestate.registerEvents()
-    gamestate.switch(SplashState)
+    gamestate.switch(MissionSelectionState)
 end
 
 function love.update(elapsed)

@@ -12,6 +12,7 @@ return {
   nextlayerid = 4,
   nextobjectid = 19,
   properties = {
+    ["difficulty"] = 7,
     ["left_exit"] = "none",
     ["next_phase"] = "0_5",
     ["right_exit"] = "none"

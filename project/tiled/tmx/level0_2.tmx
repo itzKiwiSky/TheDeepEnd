@@ -4,6 +4,7 @@
   <export target="../../../assets/data/levels/level0_2.lua" format="lua"/>
  </editorsettings>
  <properties>
+  <property name="difficulty" type="int" value="3"/>
   <property name="left_exit" value="none"/>
   <property name="next_phase" value="0_3"/>
   <property name="right_exit" value="none"/>

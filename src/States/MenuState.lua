@@ -46,8 +46,8 @@ function MenuState:enter()
     viewElements = {
         container = {
             x = love.graphics.getWidth() / 2 - 128,
-            y = love.graphics.getHeight() / 2 - 150,
-            w = 256,
+            y = love.graphics.getHeight() / 2 - 200,
+            w = 280,
             h = 48,
             margins = 32
         },
@@ -62,7 +62,7 @@ function MenuState:enter()
                         camTween:oncomplete(function()
                             snd_themeOST:stop()
                             snd_ambientSound:seek(0)
-                            gamestate.switch(MissionSelectionState)
+                            gamestate.switch(PlayState)
                         end)
                         transitionOut = true
                     end
@@ -76,12 +76,26 @@ function MenuState:enter()
                 end
             },
             {
+                text = languageService["menu_buttons_achievements"],
+                locked = false,
+                onClick = function()
+                    
+                end
+            },
+            {
                 text = languageService["menu_buttons_credits"],
                 locked = false,
                 onClick = function()
-                    snd_themeOST:stop()
-                    snd_ambientSound:seek(0)
-                    gamestate.switch(CreditsState)
+                    if not transitionOut then
+                        camTween = flux.to(menuCam, 5, {y = love.graphics.getHeight()})
+                        camTween:ease("backin")
+                        camTween:oncomplete(function()
+                            snd_themeOST:stop()
+                            snd_ambientSound:seek(0)
+                            gamestate.switch(CreditsState)
+                        end)
+                        transitionOut = true
+                    end
                 end
             },
             {
@@ -171,8 +185,6 @@ function MenuState:enter()
     end
     snd_themeOST:setLooping(true)
     snd_themeOST:play()
-
-
 end
 
 function MenuState:draw()
@@ -193,7 +205,7 @@ function MenuState:draw()
             end
 
             love.graphics.draw(logoGame, love.graphics.getWidth() / 2, 20 + logoGameY, 0, 1.2, 1.2, logoGame:getWidth() / 2, logoGame:getHeight() / 2)
-            love.graphics.draw(logoDemo, logoGame:getWidth(), logoGameY - 30, 0, 0.8, 0.8, logoDemo:getWidth() / 2, logoDemo:getHeight() / 2)
+            love.graphics.draw(logoDemo, logoGame:getWidth() + 60, logoGameY - 40, 0, 0.8, 0.8, logoDemo:getWidth() / 2, logoDemo:getHeight() / 2)
 
             for _, e in ipairs(buttons) do
                 if e.btn:hover() then
@@ -208,15 +220,16 @@ function MenuState:draw()
                 love.graphics.setColor(1, 1, 1, 1)
             end
 
-            love.graphics.setColor(0.6, 0.6, 0.6, 1)
-                love.graphics.print("version " .. buildValues.version, fnt_menuVersion, 10, love.graphics.getHeight() - fnt_menuVersion:getHeight())
-            love.graphics.setColor(1, 1, 1, 1)
             love.graphics.setBlendMode("alpha")
             love.graphics.setColor(0, 0, 0, 1)
                 love.graphics.draw(bg_transparentGradient, 0, love.graphics.getHeight() - 128, 0, love.graphics.getWidth(), 128)
                 love.graphics.draw(bg_transparentGradient, 0, 128, 0, love.graphics.getWidth(), -128)
                 love.graphics.rectangle("fill", 0, love.graphics.getHeight(), love.graphics.getWidth(), love.graphics.getHeight() * 2)
                 love.graphics.rectangle("fill", 0, -256, love.graphics.getWidth(), 256)
+            love.graphics.setColor(1, 1, 1, 1)
+
+            love.graphics.setColor(0.6, 0.6, 0.6, 1)
+                love.graphics.print("version " .. buildValues.version, fnt_menuVersion, 10, love.graphics.getHeight() - fnt_menuVersion:getHeight())
             love.graphics.setColor(1, 1, 1, 1)
         end)
     menuCam:detach()

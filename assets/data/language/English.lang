@@ -2,6 +2,7 @@
     "menu" : {
         "buttons" : {
             "menu_buttons_play" : "Play",
+            "menu_buttons_achievements" : "Achievements",
             "menu_buttons_options" : "Options",
             "menu_buttons_credits" : "Credits",
             "menu_buttons_exit" : "Exit"
@@ -22,5 +23,8 @@
         "game_complete_level" : "Press [SPACE] to continue",
         "game_player_dead_touch" : "You are dead!\n\nTouch to restart",
         "game_player_dead" : "You are dead!\n\nPress [SPACE] to restart"
+    },
+    "mission" : {
+        "mission_select_title" : "Select mission"
     }
 }

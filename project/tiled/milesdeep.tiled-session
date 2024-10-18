@@ -27,35 +27,38 @@
             "scaleInDock": 1
         },
         "tmx/level0_0.tmx": {
-            "scale": 0.12,
+            "scale": 0.5434,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 600,
-                "y": 3750
+                "x": 285.2410747147589,
+                "y": 806.036069193964
             }
         },
         "tmx/level0_1.tmx": {
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 405.33333333333337,
-                "y": 1108.6666666666665
+                "x": 517.3333333333333,
+                "y": 1121.3333333333333
             }
         },
         "tmx/level0_2.tmx": {
-            "scale": 0.12,
+            "scale": 0.2925,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 600,
-                "y": 1925.0000000000005
+                "x": 1131.6239316239319,
+                "y": 994.871794871795
             }
         },
         "tmx/level0_3.tmx": {
-            "scale": 0.12,
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.8871,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 600,
-                "y": 325
+                "x": 321.27155901251274,
+                "y": 523.0526434449329
             }
         },
         "tmx/level0_4.tmx": {
@@ -65,8 +68,8 @@
             "scale": 0.12,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 600,
-                "y": -700
+                "x": 1300.0000000000002,
+                "y": -625
             }
         },
         "tmx/level1.tmx": {
@@ -117,8 +120,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 3080,
-                "y": -38
+                "x": 3143,
+                "y": -335
             }
         },
         "tmx/level_debug.tmx#blocks_tileset": {
@@ -159,7 +162,7 @@
         "tmx/level0_4.tmx"
     ],
     "project": "milesdeep.tiled-project",
-    "property.type": "float",
+    "property.type": "int",
     "recentFiles": [
         "tmx/level_debug.tmx",
         "tmx/level0_0.tmx",

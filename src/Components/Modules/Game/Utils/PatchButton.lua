@@ -11,6 +11,7 @@ local function _new(texturepath, text, x, y, w, h)
     self.w = w or 32
     self.h = h or 32
     self.text = text or "sample"
+    self.mx, self.my = love.mouse.getPosition()
     return self
 end
 
@@ -38,7 +39,7 @@ function PatchButton:draw()
 end
 
 function PatchButton:hover(elapsed)
-    local mx, my = love.mouse.getPosition()
+    local mx, my = self.mx, self.my
 
     if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w + 32, h = self.h + 32}) then
         return true
@@ -47,7 +48,7 @@ function PatchButton:hover(elapsed)
 end
 
 function PatchButton:clicked()
-    local mx, my = love.mouse.getPosition()
+    local mx, my = self.mx, self.my
 
     if collision.pointRect({x = mx, y = my}, {x = self.x, y = self.y, w = self.w + 32, h = self.h + 32}) then
         if love.mouse.isDown(1) then

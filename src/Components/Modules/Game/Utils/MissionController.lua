@@ -26,7 +26,7 @@ function MissionController.registerPack(name, locked, maps)
 
     local average = #pack.maps > 0 and (sum / #pack.maps) or 0
     pack.difficultyAverage = math.floor(average)
-    MissionController.packs[name] = pack
+    table.insert(missionController.packs, pack)
 end
 
 return MissionController

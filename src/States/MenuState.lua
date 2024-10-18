@@ -237,6 +237,7 @@ end
 
 function MenuState:update(elapsed)
     for _, e in ipairs(buttons) do
+        e.btn.m, e.btn.my = love.mouse.getPosition()
         if GlobalTouch:isHit(e.id) and not e.locked then
             e.onClick()
         end

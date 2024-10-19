@@ -2,31 +2,31 @@
 ###### Veja tambem
 [English](README.md) | [Português Brasileiro](docs/READMES/README-ptbr.md)
 ---
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
-![GitHub forks](https://img.shields.io/github/forks/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
-![GitHub stars](https://img.shields.io/github/stars/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
+![](https://img.shields.io/github/languages/code-size/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
+![](https://img.shields.io/github/forks/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
+![](https://img.shields.io/github/stars/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
 ---
 # The deep end
 
-A new mission has been sent to you, diver. You'll have to go to the bottom of the Mariana Trench and discover all the secrets it's hiding from us. Don't let us down... this will be your last chance.
+Uma nova missão foi enviada a você, mergulhador. Você terá que ir até o fundo da Fossa das Marianas e descobrir todos os segredos que ela está escondendo de nós. Não nos decepcione... esta será sua última chance.
 
 ---
 
-This game was inspired by a game called 23 Miles deep, released in 2019 by Odd Giant (Known in Brazil as Amdre young) in the play store. The game was removed from store since no updates had been released for two years, so Google removed the app from the store.
+Esse jogo foi inspirado em um jogo chamado 23 Miles deep, lançado em 2019 pelo Odd Giant (conhecido no Brasil como Amdre young) na Play Store. O jogo foi removido da loja porque nenhuma atualização foi lançada por dois anos, então o Google removeu o aplicativo de sua loja.
 
-This project tries to revive this game, since it has incredible potential, rewritting it from scratch in a new engine we will be improving everything the old game had, adding new content and other stuff.
+Este projeto tenta reviver este jogo, já que ele tem um potencial incrível, reescrevendo-o do zero em um novo motor, estaremos melhorando tudo o que o jogo antigo tinha, adicionando novos conteúdos e muito mais.
 
-## Description of 23 Miles Deep (Original description)
+## Descrição de 23 Miles Deep (Descrição original)
 
-You have the mysterious quest of diving to the bottom of a 23 miles deep trench, home to all kinds of fishes, deep sea creatures, a lost civilization and a few friendly faces.
+Você tem a misteriosa missão de mergulhar até o fundo de uma fossa de 23 milhas de profundidade, lar de todos os tipos de peixes, criaturas do fundo do mar, uma civilização perdida e alguns rostos amigáveis.
 
-Key Features:
+Principais recursos:
 
-- Easy controls
+- Controles fáceis
 
-- Challenging gameplay
+- Jogabilidade desafiadora
 
-- Progressive upgrades
+- Atualizações progressivas
 
 ---
 

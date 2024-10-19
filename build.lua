@@ -34,7 +34,7 @@ return {
             "assets/bin/linux/https.so",
             "assets/bin/linux/libdiscord-rpc.so"
         },
-        all = {"LICENSE"}
+        all = {"LICENSE", "CHANGELOG.md"}
     },
     platforms = {"windows", "linux", "macos"} 
 }

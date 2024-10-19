@@ -48,7 +48,9 @@ function MissionSelectionState:enter()
 
     checkingPack = false
     currentPack = nil
-
+    canClickOnButtonsList = true
+    canClickOnButtonsPanel = false
+    isHoldingClick = false
 
     closeMissionPanelButton = buttonPatch("assets/images/frameStyle_line", languageService["mission_panel_button_back"], 128, 540, 128, 48, 20)
     playMissionPanelButton = buttonPatch("assets/images/frameStyle_line", languageService["mission_panel_button_play"], 360, 540, 128, 48, 20)
@@ -102,7 +104,7 @@ function MissionSelectionState:draw()
                 end
             end
         end
-        if closeMissionPanelButton:hover()then
+        if closeMissionPanelButton:hover() then
             love.graphics.setColor(0.7, 0.7, 0.7, 1)
         else
             love.graphics.setColor(1, 1, 1, 1)
@@ -147,41 +149,47 @@ function MissionSelectionState:update(elapsed)
 end
 
 function MissionSelectionState:mousepressed(x, y, button)
-    if not doFade and not checkingPack then
+    if canClickOnButtonsList then
         for _, e in ipairs(packButtonList) do
             if e.btn:clicked() then
                 local checkPanelTween = flux.to(missionDetailsCam, 2, {y = love.graphics.getHeight() / 2})
                 checkPanelTween:ease("backout")
                 checkPanelTween:onstart(function()
                     doFade = true
+                    canClickOnButtonsList = false
                     currentPack = missionController.packs[_]
                 end)
                 checkPanelTween:oncomplete(function()
                     checkingPack = true
+                    canClickOnButtonsPanel = true
                 end)
             end
         end
-    elseif doFade then
+    elseif canClickOnButtonsPanel then
         if closeMissionPanelButton:clicked() then
             local closePanelTween = flux.to(missionDetailsCam, 2, {y = love.graphics.getHeight() * 2})
             closePanelTween:ease("backin")
             closePanelTween:onstart(function()
                 doFade = false
+                canClickOnButtonsPanel = false
             end)
             closePanelTween:oncomplete(function()
                 currentPack = nil
                 checkingPack = false
+                canClickOnButtonsList = true
             end)
         end
     end
 end
 
 function MissionSelectionState:wheelmoved(x, y)
-    if y < 0 then
-        listCamScroll = listCamScroll + 32
-    end
-    if y > 0 then
-        listCamScroll = listCamScroll - 32
+    if canClickOnButtonsList then
+        if y < 0 then
+            listCamScroll = listCamScroll + 64
+        end
+        if y > 0 then
+            listCamScroll = listCamScroll - 64
+        end
     end
 end
 

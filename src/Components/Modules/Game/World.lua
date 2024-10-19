@@ -24,7 +24,7 @@ local function _getObjectByType(this, type)
     return nil
 end
 
-function World:init(levelfile)
+function World:init(levelPack)
     local levelEnd = require 'src.Components.Modules.Game.Objects.EndHitbox'
     self.templates = {
         player = require 'src.Components.Modules.Game.Objects.Player',

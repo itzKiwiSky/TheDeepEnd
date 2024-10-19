@@ -1,5 +1,6 @@
 [![banner](gjassets/banner.png)](https://gamejolt.com/games/thedeepend/927712)
-###### See also in
+###### Veja tambem
+[English](README.md) | [Português Brasileiro](docs/READMES/README-ptbr.md)
 ---
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))
 ![GitHub forks](https://img.shields.io/github/forks/KiwiStationStudios/TheDeepEnd?style=for-the-badge&labelColor=rgb(45%2C%2045%2C%2045)&color=rgb(85%2C%2085%2C%2085))

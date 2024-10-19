@@ -1,17 +1,18 @@
 local PatchButton = {}
 PatchButton.__index = PatchButton
 
-local function _new(texturepath, text, x, y, w, h)
+local function _new(texturepath, text, x, y, w, h, fntSize)
     local self = setmetatable({}, PatchButton)
-    self.assets = {}
-    self.assets.sheet, self.assets.quads = love.graphics.getQuads(texturepath)
-    self.font = fontcache.getFont("phoenixbios", 26)
     self.x = x or 0
     self.y = y or 0
     self.w = w or 32
     self.h = h or 32
+    self.size = fntSize or 26
     self.text = text or "sample"
     self.mx, self.my = love.mouse.getPosition()
+    self.assets = {}
+    self.assets.sheet, self.assets.quads = love.graphics.getQuads(texturepath)
+    self.font = fontcache.getFont("phoenixbios", self.size)
     return self
 end
 

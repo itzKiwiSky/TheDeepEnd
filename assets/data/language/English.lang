@@ -25,6 +25,11 @@
         "game_player_dead" : "You are dead!\n\nPress [SPACE] to restart"
     },
     "mission" : {
-        "mission_select_title" : "Select mission"
+        "mission_select_title" : "Select mission",
+        "panel" : {
+            "mission_panel_difficulty" : "Difficulty",
+            "mission_panel_button_back" : "Back",
+            "mission_panel_button_play" : "Play"
+        }
     }
 }

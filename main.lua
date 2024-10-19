@@ -19,6 +19,7 @@ function love.initialize(args)
 
     fontcache.init()
 
+    --[[
     lollipop.currentSave.game = {
         user = {
             settings = {
@@ -37,10 +38,32 @@ function love.initialize(args)
     }
 
     lollipop.initializeSlot("dive")
+    ]]--
+
+    gameslot = neuron.new("dive")
+
+    gameslot.save.game = {
+        user = {
+            settings = {
+                shaders = true,
+                language = "English",
+                gamejolt = {
+                    username = "",
+                    usertoken = ""
+                },
+            },
+            game = {
+                totalPoints = 0,
+            },
+            achievements = {},
+        }
+    }
+
+    gameslot:initialize()
 
     love.graphics.setDefaultFilter("nearest", "nearest")
 
-    languageService = LanguageController(lollipop.currentSave.game.user.settings.language)
+    languageService = LanguageController(gameslot.save.game.user.settings.language)
 
     registers = {
         user = {
@@ -86,7 +109,7 @@ function love.initialize(args)
     love.filesystem.createDirectory("screenshots")
 
     gamestate.registerEvents()
-    gamestate.switch(MissionSelectionState)
+    gamestate.switch(SplashState)
 end
 
 function love.update(elapsed)

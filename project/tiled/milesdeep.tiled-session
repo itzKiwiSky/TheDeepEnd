@@ -5,11 +5,11 @@
     },
     "activeFile": "tmx/level0_4.tmx",
     "expandedProjectPaths": [
-        "tmx",
-        "tsx",
+        "worlds",
         ".",
+        "tsx",
         "templates",
-        "worlds"
+        "tmx"
     ],
     "fileStates": {
         "": {
@@ -30,24 +30,24 @@
             "scale": 0.5434,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 285.2410747147589,
-                "y": 806.036069193964
+                "x": 284.3209422156791,
+                "y": 806.9562016930438
             }
         },
         "tmx/level0_1.tmx": {
             "scale": 0.75,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 517.3333333333333,
-                "y": 1121.3333333333333
+                "x": 516.6666666666666,
+                "y": 1122
             }
         },
         "tmx/level0_2.tmx": {
             "scale": 0.2925,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1131.6239316239319,
-                "y": 994.871794871795
+                "x": 1133.3333333333333,
+                "y": 996.5811965811967
             }
         },
         "tmx/level0_3.tmx": {
@@ -57,19 +57,19 @@
             "scale": 0.8871,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 321.27155901251274,
-                "y": 523.0526434449329
+                "x": 321.83519332656965,
+                "y": 522.4890091308758
             }
         },
         "tmx/level0_4.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.12,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1300.0000000000002,
-                "y": -625
+                "x": 287.878787878788,
+                "y": -3775.757575757576
             }
         },
         "tmx/level1.tmx": {
@@ -120,8 +120,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 3143,
-                "y": -335
+                "x": 3207,
+                "y": -633
             }
         },
         "tmx/level_debug.tmx#blocks_tileset": {

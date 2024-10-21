@@ -1,29 +1,30 @@
 MenuState = {}
 
 function MenuState:init()
+    BGParticles = require 'src.Components.Modules.Game.Particles.BGParticles'
+    buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
+
+    -- bg objs ---
+    bg_fish = require 'src.Components.Modules.Game.MenuObjects.Fish'
+
     snd_ambientSound = love.audio.newSource("assets/sounds/ambient/underwater.ogg", "static")
     snd_themeOST = love.audio.newSource("assets/sounds/theme.ogg", "static")
+    mountainsBG = love.graphics.newImage("assets/images/menu/mountains.png")
+
+    logoGame = love.graphics.newImage("assets/images/menu/logogame.png")
+    logoDemo = love.graphics.newImage("assets/images/menu/demoText.png")
+    logoGameY = 140
+    logoSpeed = 2.1
+    logoAmplitude = 1.2
 end
 
 function MenuState:enter()
-    buttonPatch = require 'src.Components.Modules.Game.Utils.PatchButton'
-
     menuCam = camera()
 
     bg_gradient = love.graphics.newGradient("vertical", {40, 40, 40, 255}, {0, 0, 0, 255})
     bg_transparentGradient = love.graphics.newGradient("vertical", {255, 255, 255, 0}, {255, 255, 255, 255})
-    bg_fish = require 'src.Components.Modules.Game.MenuObjects.Fish'
 
     bgobjects = {}
-
-    mountainsBG = love.graphics.newImage("assets/images/mountains.png")
-    BGParticles = require 'src.Components.Modules.Game.Particles.BGParticles'
-
-    logoGame = love.graphics.newImage("assets/images/logogame.png")
-    logoDemo = love.graphics.newImage("assets/images/demoText.png")
-    logoGameY = 140
-    logoSpeed = 2.1
-    logoAmplitude = 1.2
 
     effect = moonshine(moonshine.effects.vignette)
     effect.vignette.radius = 1.4
@@ -112,7 +113,7 @@ function MenuState:enter()
         local element = viewElements.elements[e]
         table.insert(buttons, {
             btn = buttonPatch(
-                "assets/images/patchButton", element.text, viewElements.container.x, 
+                "assets/images/framestyles/frameStyle_linesmooth", element.text, viewElements.container.x, 
                 viewElements.container.y + e * 3 * viewElements.container.margins, 
                 viewElements.container.w, viewElements.container.h
             ),

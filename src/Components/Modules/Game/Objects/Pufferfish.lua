@@ -5,7 +5,7 @@ local function _new(x, y, range)
     local self = setmetatable({}, Pufferfish)
     self.type = "pufferfish"
     self.assets = {}
-    self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/pufferfish")
+    self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/game/props/pufferfish")
     self.x = x or 0
     self.y = y or 0
     self.targetX = 0

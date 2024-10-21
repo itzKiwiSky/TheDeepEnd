@@ -5,15 +5,27 @@ function MissionSelectionState:init()
     patchPanel = require 'src.Components.Modules.Game.Utils.patchPanel'
     missionController = require 'src.Components.Modules.Game.Utils.MissionController'
 
-    missionPanel = patchPanel("assets/images/frameBG", 32, 256, love.graphics.getWidth() - 96, 384)
+    missionPanel = patchPanel("assets/images/framestyles/frameStyle_oldschool", 32, 256, love.graphics.getWidth() - 96, 384)
     
     lume.clear(missionController.packs)
 
+    -- debug only --
+    --[[
     for i = 1, 20, 1 do
         missionController.registerPack("The basics" .. i, false, "the_basics")
     end
+    ]]--
 
-    menuIcons_sheet, menuIcons_quads = love.graphics.getHashedQuads("assets/images/menuIcons")
+    local levelpacks = love.filesystem.getDirectoryItems("assets/data/levels")
+    for lv = 1, #levelpacks, 1 do
+        local lvltype = love.filesystem.getInfo("assets/data/levels/" .. levelpacks[lv]).type
+        if lvltype == "directory" then
+            local lvlpackdata = json.decode(love.filesystem.read("assets/data/levels/" .. levelpacks[lv] .. "/pack.json"))
+            missionController.registerPack(lvlpackdata.name, false, levelpacks[lv])
+        end
+    end
+
+    menuIcons_sheet, menuIcons_quads = love.graphics.getHashedQuads("assets/images/menu/menuIcons")
     fnt_missionSelect = fontcache.getFont("phoenixbios", 26)
 
     listCam = camera()
@@ -38,7 +50,7 @@ function MissionSelectionState:enter()
     for _, m in ipairs(missionController.packs) do
         table.insert(packButtonList, {
             btn = buttonPatch(
-                "assets/images/frameStyle_dash", m.name, 20, 
+                "assets/images/framestyles/frameStyle_dash", m.name, 20, 
                 128 * _ * 1.1, -- <---- between the numbers, his name is joe --
                 love.graphics.getWidth() - 76, 96
             ),
@@ -52,8 +64,8 @@ function MissionSelectionState:enter()
     canClickOnButtonsPanel = false
     isHoldingClick = false
 
-    closeMissionPanelButton = buttonPatch("assets/images/frameStyle_line", languageService["mission_panel_button_back"], 128, 540, 128, 48, 20)
-    playMissionPanelButton = buttonPatch("assets/images/frameStyle_line", languageService["mission_panel_button_play"], 360, 540, 128, 48, 20)
+    closeMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_line", languageService["mission_panel_button_back"], 128, 540, 128, 48, 20)
+    playMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_line", languageService["mission_panel_button_play"], 360, 540, 128, 48, 20)
 end
 
 function MissionSelectionState:draw()

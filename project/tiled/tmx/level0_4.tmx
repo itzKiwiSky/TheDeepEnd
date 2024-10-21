@@ -9,7 +9,7 @@
   <property name="next_phase" value="0_5"/>
   <property name="right_exit" value="none"/>
  </properties>
- <tileset firstgid="1" source="../tsx/blocks.tsx"/>
+ <tileset firstgid="1" source="../tsx/cave_tileset.tsx"/>
  <layer id="3" name="tilesbg" width="20" height="60">
   <properties>
    <property name="color" type="float" value="0.4"/>

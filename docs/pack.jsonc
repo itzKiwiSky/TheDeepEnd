@@ -1,0 +1,11 @@
+{
+    "name" : "The Basics",      // the level pack name
+    "description" : "not used yet",     // Description (future use)
+    "color" : "#7bef35",            // Highlight color on the mission list
+    "behaviours" : [
+        {
+            "path" : "behaviuors/tutorial.mod"
+            
+        }
+    ]           // behaviour controller
+}

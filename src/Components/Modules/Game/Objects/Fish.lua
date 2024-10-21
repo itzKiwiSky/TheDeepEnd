@@ -8,7 +8,7 @@ local function _new(x, y, speed)
     self.x = x or 0
     self.y = y or 0
     self.speed = speed or 80
-    self.drawable = love.graphics.newImage("assets/images/gamerfish.png")
+    self.drawable = love.graphics.newImage("assets/images/game/props/gamerfish.png")
     self.hitbox = {
         x = 0,
         y = 0,

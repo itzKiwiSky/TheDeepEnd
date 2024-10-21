@@ -1,4 +1,4 @@
-local image = love.graphics.newImage("assets/images/circle.png")
+local image = love.graphics.newImage("assets/images/effects/circle.png")
 image:setFilter("linear", "linear")
 
 local ps = love.graphics.newParticleSystem(image, 429)

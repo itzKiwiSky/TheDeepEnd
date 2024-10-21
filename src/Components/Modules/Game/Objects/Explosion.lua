@@ -7,7 +7,7 @@ local function _new(x, y)
     self.y = y
     self.assets = {}
     self.type = "explosion"
-    self.assets.sheet, self.assets.quads = love.graphics.getHashedQuads("assets/images/explosion")
+    self.assets.sheet, self.assets.quads = love.graphics.getHashedQuads("assets/images/effects/explosion")
     self.frame = 0
     self.explosionId = math.random(1, 3)
     self.frameTimer = 0

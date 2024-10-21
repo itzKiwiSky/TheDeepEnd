@@ -1,4 +1,4 @@
-local image = love.graphics.newImage("assets/images/lightDot.png")
+local image = love.graphics.newImage("assets/images/effects/lightDot.png")
 
 local ps = love.graphics.newParticleSystem(image, 77)
 ps:setColors(1, 1, 1, 0, 1, 1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 0.49609375, 1, 1, 1, 0)

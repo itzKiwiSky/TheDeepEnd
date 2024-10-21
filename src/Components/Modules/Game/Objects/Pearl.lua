@@ -16,7 +16,7 @@ local function _new(x, y, points)
         h = 32
     }
 
-    self.drawable = love.graphics.newImage("assets/images/pearl.png")
+    self.drawable = love.graphics.newImage("assets/images/game/props/pearl.png")
 
     self.hitbox.x = self.x - self.hitbox.offsetX
     self.hitbox.y = self.y - self.hitbox.offsetY

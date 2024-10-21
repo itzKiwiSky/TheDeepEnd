@@ -8,10 +8,10 @@ local function _new(x, y, height, range)
     self.type = "bomb"
     self.h = height or 32
     self.assets = {
-        bomb = love.graphics.newImage("assets/images/bomb.png"),
+        bomb = love.graphics.newImage("assets/images/game/props/bomb.png"),
         chains = {}
     }
-    self.assets.chainSheet, self.assets.chainQuads = love.graphics.getHashedQuads("assets/images/chain")
+    self.assets.chainSheet, self.assets.chainQuads = love.graphics.getHashedQuads("assets/images/game/props/chain")
     self.hitbox = {
         type = "circle",
         x = 64,

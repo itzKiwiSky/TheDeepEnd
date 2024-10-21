@@ -9,7 +9,7 @@ function CreditsState:init()
 
     BGParticles = require 'src.Components.Modules.Game.Particles.BGParticles'
 
-    logoGame = love.graphics.newImage("assets/images/logogame.png")
+    logoGame = love.graphics.newImage("assets/images/menu/logogame.png")
 
     effect = moonshine(moonshine.effects.vignette)
     effect.vignette.radius = 1.4
@@ -37,7 +37,7 @@ function CreditsState:enter()
         "Dedications\nYosho - Cool helper\nRetrokid - bro makes sick music\nThzao <3\nAmdre young\nand\nYou! :3"
     }
 
-    backButton = buttonPatch("assets/images/patchButton", languageService["credits_buttons_back"], 20, love.graphics.getHeight() - 96, 96, 32)
+    backButton = buttonPatch("assets/images/framestyles/frameStyle_doubleline", languageService["credits_buttons_back"], 20, love.graphics.getHeight() - 96, 96, 32)
     backButton.font = fontcache.getFont("phoenixbios", 18)
 end
 

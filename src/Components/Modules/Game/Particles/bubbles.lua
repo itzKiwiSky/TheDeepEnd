@@ -1,4 +1,4 @@
-local image = love.graphics.newImage("assets/images/circle.png")
+local image = love.graphics.newImage("assets/images/effects/circle.png")
 
 local ps = love.graphics.newParticleSystem(image, 24)
 ps:setColors(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 1, 0)

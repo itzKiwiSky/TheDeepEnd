@@ -34,7 +34,7 @@ function Player:init(x, y)
 
     --self.diverAsset = love.graphics.newImage("assets/images/diver.png")
     self.diverAssets = {}
-    self.diverAssets.image, self.diverAssets.quads = love.graphics.getQuads("assets/images/diver")
+    self.diverAssets.image, self.diverAssets.quads = love.graphics.getQuads("assets/images/game/diver")
 end
 
 function Player:draw()

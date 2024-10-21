@@ -25,9 +25,9 @@ end
 function PlayState:init()
     world = require 'src.Components.Modules.Game.World'
 
-    heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/heart_hud")
-    harpoonHud = love.graphics.newImage("assets/images/harpoon.png")
-    pauseButton = love.graphics.newImage("assets/images/pauseButton.png")
+    heartsheet, heartquads = love.graphics.getHashedQuads("assets/images/game/interface/heart_hud")
+    harpoonHud = love.graphics.newImage("assets/images/game/props/harpoon.png")
+    pauseButton = love.graphics.newImage("assets/images/game/interface/pauseButton.png")
 
     world:init()
 

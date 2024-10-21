@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tmx/level0_4.tmx",
+    "activeFile": "tsx/cave_tileset.tsx",
     "expandedProjectPaths": [
         "worlds",
-        ".",
-        "tsx",
         "templates",
-        "tmx"
+        "tmx",
+        ".",
+        "tsx"
     ],
     "fileStates": {
         "": {
@@ -30,8 +30,8 @@
             "scale": 0.5434,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 284.3209422156791,
-                "y": 806.9562016930438
+                "x": 142.62053735737948,
+                "y": 608.2075818917923
             }
         },
         "tmx/level0_1.tmx": {
@@ -46,7 +46,7 @@
             "scale": 0.2925,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1133.3333333333333,
+                "x": 1133.3333333333335,
                 "y": 996.5811965811967
             }
         },
@@ -57,8 +57,8 @@
             "scale": 0.8871,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 321.83519332656965,
-                "y": 522.4890091308758
+                "x": 321.8351933265697,
+                "y": 522.489009130876
             }
         },
         "tmx/level0_4.tmx": {
@@ -68,8 +68,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 287.878787878788,
-                "y": -3775.757575757576
+                "x": 265.1515151515151,
+                "y": -3919.6969696969695
             }
         },
         "tmx/level1.tmx": {
@@ -120,8 +120,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 3207,
-                "y": -633
+                "x": 3440,
+                "y": -1394
             }
         },
         "tmx/level_debug.tmx#blocks_tileset": {
@@ -132,19 +132,24 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 348,
-                "y": 419.99999999999994
+                "y": 420
             }
         },
         "tsx/blocks.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 2
+        },
+        "tsx/cave_tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/data/levels",
+    "last.exportedFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/data/tilesets",
     "last.externalTilesetPath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tsx",
-    "last.imagePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/images",
+    "last.imagePath": "C:/Users/kiwis/Área de Trabalho/miledeep/assets/images/game/tilesets",
     "last.objectTemplatePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/templates",
     "last.worldFilePath": "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tmx",
+    "lastUsedTilesetExportFilter": "Arquivos Lua (*.lua)",
     "loadedWorlds": [
         "C:/Users/kiwis/Área de Trabalho/miledeep/project/tiled/tmx/main_progression.world"
     ],
@@ -154,28 +159,28 @@
     "map.width": 20,
     "mapScene.enableWorlds": true,
     "openFiles": [
-        "tmx/level_debug.tmx",
-        "tmx/level0_0.tmx",
-        "tmx/level0_3.tmx",
-        "tmx/level0_1.tmx",
-        "tmx/level0_2.tmx",
-        "tmx/level0_4.tmx"
-    ],
-    "project": "milesdeep.tiled-project",
-    "property.type": "int",
-    "recentFiles": [
-        "tmx/level_debug.tmx",
         "tmx/level0_0.tmx",
         "tmx/level0_3.tmx",
         "tmx/level0_1.tmx",
         "tmx/level0_2.tmx",
         "tmx/level0_4.tmx",
+        "tsx/cave_tileset.tsx"
+    ],
+    "project": "milesdeep.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "tmx/level0_0.tmx",
+        "tmx/level0_3.tmx",
+        "tmx/level0_1.tmx",
+        "tmx/level0_2.tmx",
+        "tmx/level0_4.tmx",
+        "tsx/cave_tileset.tsx",
+        "tmx/template.tmx",
+        "tmx/level_debug.tmx",
         "tmx/level1.tmx",
         "tmx/level2.tmx",
         "tmx/level3.tmx",
-        "tmx/level4.tmx",
-        "tsx/blocks.tsx",
-        "tmx/template.tmx"
+        "tmx/level4.tmx"
     ],
     "tileset.lastUsedFilter": "Ficheiros de conjunto de tiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx"

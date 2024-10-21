@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Level progression, now you select missions that is level packs
 - Items are persisted when change a level
+- Pearls are globally persisted
 
 ### Fixed
 - Fixed DiscordRPC library bug that Linux and Mac users can't run the game.

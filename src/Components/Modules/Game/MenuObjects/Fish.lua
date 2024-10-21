@@ -8,7 +8,7 @@ local function _new(x, y, direction)
     self.x = x
     self.y = y
     self.speed = math.random(50, 100)
-    self.drawable = love.graphics.newImage("assets/images/gamerfish.png")
+    self.drawable = love.graphics.newImage("assets/images/game/props/gamerfish.png")
     return self
 end
 

@@ -7,7 +7,7 @@ local function _new(x, y, direction, attackTime, attackCooldown)
     self.x = x or 0
     self.y = y or 0
     self.assets = {}
-    self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/geiser")
+    self.assets.sheet, self.assets.quads = love.graphics.getQuads("assets/images/game/props/geiser")
     self.assets.particles = require 'src.Components.Modules.Game.Particles.GeiserSplash'
     self.direction = direction or 1
     self.attackTime = attackTime or 2.4

@@ -3,8 +3,8 @@ SplashState = {}
 function SplashState:enter()
     splashTimer = timer.new()
 
-    kiwiLogo = love.graphics.newImage("assets/images/kiwi.png")
-    whaleLogo = love.graphics.newImage("assets/images/whaleLove.png")
+    kiwiLogo = love.graphics.newImage("assets/images/system/kiwi.png")
+    whaleLogo = love.graphics.newImage("assets/images/system/whaleLove.png")
     whaleLogo:setFilter("linear", "linear")
     fnt_logoText = fontcache.getFont("phoenixbios", 25)
     fnt_loveLogo = fontcache.getFont("phoenixbios", 18)
@@ -79,6 +79,14 @@ function SplashState:update(elapsed)
 
     fadeTween:update(elapsed)
     loveLogoTween:update(elapsed)
+end
+
+function SplashState:leave()
+    kiwiLogo:release()
+    whaleLogo:release()
+    fnt_logoText:release()
+    fnt_loveLogo:release()
+    snd_logosnd:release()
 end
 
 return SplashState

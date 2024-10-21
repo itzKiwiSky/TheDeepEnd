@@ -9,6 +9,7 @@ return function()
     slab = require 'libraries.slab'
     class = require 'libraries.classic'
     camera = require 'libraries.camera'
+    shack = require 'libraries.shack'
     collision = require 'libraries.collision'
     deep = require 'libraries.deep'
     discordrpc = require 'libraries.discordRPC'

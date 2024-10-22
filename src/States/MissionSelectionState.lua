@@ -9,13 +9,6 @@ function MissionSelectionState:init()
     
     lume.clear(missionController.packs)
 
-    -- debug only --
-    --[[
-    for i = 1, 20, 1 do
-        missionController.registerPack("The basics" .. i, false, "the_basics")
-    end
-    ]]--
-
     local levelpacks = love.filesystem.getDirectoryItems("assets/data/levels")
     for lv = 1, #levelpacks, 1 do
         local lvltype = love.filesystem.getInfo("assets/data/levels/" .. levelpacks[lv]).type

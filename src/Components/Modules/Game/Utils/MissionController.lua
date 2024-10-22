@@ -8,10 +8,11 @@ local MissionController = {
 ---@param locked boolean
 ---@param maps table
 ---@return nil
-function MissionController.registerPack(name, locked, mapFolder)
+function MissionController.registerPack(name, locked, color, mapFolder)
     local pack = {
         name = name,
         locked = locked or false,
+        color = {lume.color(tostring(color))} or {1, 1, 1},
         maps = {},
         difficultyAverage = 0,
     }
@@ -20,7 +21,9 @@ function MissionController.registerPack(name, locked, mapFolder)
     assert(folder ~= nil, "[ERROR] : Invalid folder")
     local mapsPaths = love.filesystem.getDirectoryItems("assets/data/levels/" .. mapFolder)
     for f = 1, #mapsPaths, 1 do
-        table.insert(pack.maps, "assets/data/levels/" .. mapFolder .. "/" .. mapsPaths[f])
+        if mapsPaths[f]:match("[^.]+$") == "lua" then
+            table.insert(pack.maps, "assets/data/levels/" .. mapFolder .. "/" .. mapsPaths[f])
+        end
     end
 
     -- calculate the average --

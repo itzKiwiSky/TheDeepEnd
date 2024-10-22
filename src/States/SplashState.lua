@@ -84,8 +84,6 @@ end
 function SplashState:leave()
     kiwiLogo:release()
     whaleLogo:release()
-    fnt_logoText:release()
-    fnt_loveLogo:release()
     snd_logosnd:release()
 end
 

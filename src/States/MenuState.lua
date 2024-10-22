@@ -63,7 +63,7 @@ function MenuState:enter()
                         camTween:oncomplete(function()
                             snd_themeOST:stop()
                             snd_ambientSound:seek(0)
-                            gamestate.switch(PlayState)
+                            gamestate.switch(MissionSelectionState)
                         end)
                         transitionOut = true
                     end
@@ -238,7 +238,7 @@ end
 
 function MenuState:update(elapsed)
     for _, e in ipairs(buttons) do
-        e.btn.m, e.btn.my = love.mouse.getPosition()
+        e.btn.mx, e.btn.my = menuCam:mousePosition()
         if GlobalTouch:isHit(e.id) and not e.locked then
             e.onClick()
         end

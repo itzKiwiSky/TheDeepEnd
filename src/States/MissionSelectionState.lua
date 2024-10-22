@@ -20,8 +20,8 @@ function MissionSelectionState:init()
     for lv = 1, #levelpacks, 1 do
         local lvltype = love.filesystem.getInfo("assets/data/levels/" .. levelpacks[lv]).type
         if lvltype == "directory" then
-            local lvlpackdata = json.decode(love.filesystem.read("assets/data/levels/" .. levelpacks[lv] .. "/pack.json"))
-            missionController.registerPack(lvlpackdata.name, false, levelpacks[lv])
+            local lvlpackdata = json.decode(tostring(love.filesystem.read("assets/data/levels/" .. levelpacks[lv] .. "/pack.json")))
+            missionController.registerPack(lvlpackdata.name, false, lvlpackdata.color,levelpacks[lv])
         end
     end
 
@@ -55,6 +55,7 @@ function MissionSelectionState:enter()
                 love.graphics.getWidth() - 76, 96
             ),
             locked = m.locked,
+            color = m.color,
         })
     end
 
@@ -64,8 +65,8 @@ function MissionSelectionState:enter()
     canClickOnButtonsPanel = false
     isHoldingClick = false
 
-    closeMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_line", languageService["mission_panel_button_back"], 128, 540, 128, 48, 20)
-    playMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_line", languageService["mission_panel_button_play"], 360, 540, 128, 48, 20)
+    closeMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_linesmooth", languageService["mission_panel_button_back"], 128, 540, 128, 48, 20)
+    playMissionPanelButton = buttonPatch("assets/images/framestyles/frameStyle_linesmooth", languageService["mission_panel_button_play"], 360, 540, 128, 48, 20)
 end
 
 function MissionSelectionState:draw()
@@ -82,15 +83,18 @@ function MissionSelectionState:draw()
     love.graphics.setStencilTest("greater", 0)
     listCam:attach()
         for _, e in ipairs(packButtonList) do
+            love.graphics.setColor(e.color)
+            e.btn:draw()
+            love.graphics.setColor(1, 1, 1, 1)
             if e.btn:hover() and not doFade then
-                love.graphics.setColor(0.7, 0.7, 0.7, 1)
+                love.graphics.setColor(0, 0, 0, 0.4)
             else
-                love.graphics.setColor(1, 1, 1, 1)
+                love.graphics.setColor(0, 0, 0, 0)
             end
             if e.locked then
-                love.graphics.setColor(0.4, 0.4, 0.4, 1)
+                love.graphics.setColor(0, 0, 0, 0.7)
             end
-            e.btn:draw()
+            love.graphics.rectangle("fill", e.btn.x, e.btn.y, e.btn.w + 32, e.btn.h + 32)
             love.graphics.setColor(1, 1, 1, 1)
         end
     listCam:detach()
